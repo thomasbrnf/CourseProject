@@ -117,12 +117,15 @@ public class AstronautIntern extends Humans implements Action {
         Label classInfo = (Label) activePane.lookup("#classInfo");
         Label experienceLabel = (Label) activePane.lookup("#experienceLabel");
         Label spaceWalksLabel = (Label) activePane.lookup("#spaceWalksLabel");
-        Line astroEnergyLine = (Line) activePane.lookup("#energyLine");
+        Line energyLine = (Line) activePane.lookup("#energyLine");
+        Line energyLineBackground = (Line) activePane.lookup("#energyLineBackground");
         classInfo.setText(getAstroClass());
         experienceLabel.setText(String.valueOf(getExperience()));
         spaceWalksLabel.setText(String.valueOf(getQuantityOfSpaceWalks()));
         astroName.setText(name);
-        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + (int)(energy*1.56));
+        energyLine.setEndX(energyLine.getStartX() + (int)(energy*1.56));
+        energyLine.toFront();
+        energyLineBackground.setStartX(energyLine.getEndX());
         if (!getGroup().getChildren().contains(activePane)) {
             getGroup().getChildren().add(activePane);
         }
@@ -134,8 +137,11 @@ public class AstronautIntern extends Humans implements Action {
         mainPane.setLayoutY(getY());
         Label astroName = (Label) mainPane.lookup("#astroName");
         Line astroEnergyLine = (Line) mainPane.lookup("#astroEnergyLine");
+        Line astroEnergyLineBackground = (Line) mainPane.lookup("#astroEnergyLineBackground");
         astroName.setText(name);
-        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy);
+        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy-1);
+        astroEnergyLine.toFront();
+        astroEnergyLineBackground.setStartX(astroEnergyLine.getEndX());
         if (!getGroup().getChildren().contains(mainPane)) {
             getGroup().getChildren().add(mainPane);
         }
@@ -147,8 +153,11 @@ public class AstronautIntern extends Humans implements Action {
         pane.setLayoutY(getY());
         Label astroName = (Label) pane.lookup("#astroName");
         Line astroEnergyLine = (Line) pane.lookup("#astroEnergyLine");
+        Line astroEnergyLineBackground = (Line) pane.lookup("#astroEnergyLineBackground");
         astroName.setText(name);
-        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy);
+        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy-1);
+        astroEnergyLine.toFront();
+        astroEnergyLineBackground.setStartX(astroEnergyLine.getEndX());
         if (!getGroup().getChildren().contains(pane)) {
             getGroup().getChildren().add(pane);
         }

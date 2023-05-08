@@ -11,11 +11,13 @@
       <Pane prefHeight="18.0" prefWidth="102.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-background-radius: 3; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);">
          <children>
             <Line fx:id="astroEnergyLine" endX="36.5" layoutX="64.0" layoutY="17.0" startX="-62.5" stroke="#ffbf00" strokeWidth="3.0" />
+            <Line fx:id="astroEnergyLineBackground" endX="36.5" layoutX="64.0" layoutY="17.0" startX="36.5" stroke="#654b00" strokeWidth="3.0" />
             <Label fx:id="astroName" layoutX="3.0" layoutY="3.0" text="Astro Name" textFill="WHITE">
                <font>
                   <Font name="Arial Bold Italic" size="10.0" />
                </font>
             </Label>
+
          </children>
       </Pane>
    </children>

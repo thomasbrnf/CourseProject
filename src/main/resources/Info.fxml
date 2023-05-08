@@ -37,4 +37,5 @@
       </font>
    </Label>
    <Line fx:id="energyLine" endX="49.0" layoutX="103.0" layoutY="44.0" startX="-100.0" stroke="#ffb81f" strokeWidth="7.0" />
+   <Line fx:id="energyLineBackground" endX="49.0" layoutX="103.0" layoutY="44.0" startX="49.0" stroke="#654b00" strokeWidth="7.0" />
 </AnchorPane>

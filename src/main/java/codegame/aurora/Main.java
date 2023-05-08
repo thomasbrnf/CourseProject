@@ -33,7 +33,7 @@ public class Main extends Application {
     public void start(Stage stage){
         Scene scene = new Scene(root,sizeX,sizeY);
         stage.setTitle("Project Aurora");
-        ImageView background = new ImageView("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\back.jpg");
+        ImageView background = new ImageView("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\gray.png");
         root.getChildren().add(background);
         scene.setOnKeyPressed(e -> {
             try {
