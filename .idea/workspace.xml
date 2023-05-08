@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/action/Movement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Astronaut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/AstronautIntern.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Humans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/ManagingAstronaut.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroCreatorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroEditorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroTabController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Astro.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Info.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Creator.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Editor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Tab.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="AnnotationType" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2OpNtoriP3yh1UgQwktd0niXnYK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Artem/IdeaProjects/Aurora/src/main/java/codegame/aurora/dialogs&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="codegame.aurora.astros" />
+      <recent name="codegame.aurora" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources" />
+      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\astros" />
+      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\codegame\aurora\dialogs" />
+      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\codegame\aurora" />
+      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\java\codegame\aurora\dialogs" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="" />
+      <created>1682253782723</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682253782723</updated>
+      <workItem from="1682253783685" duration="1221000" />
+      <workItem from="1682582946918" duration="10823000" />
+      <workItem from="1682687076069" duration="14615000" />
+      <workItem from="1682843834402" duration="812000" />
+      <workItem from="1682845785791" duration="637000" />
+      <workItem from="1682846642529" duration="7453000" />
+      <workItem from="1682866555459" duration="11528000" />
+      <workItem from="1682944907266" duration="2369000" />
+      <workItem from="1683029085318" duration="3598000" />
+      <workItem from="1683046093804" duration="5313000" />
+      <workItem from="1683112562420" duration="203000" />
+      <workItem from="1683128889216" duration="2413000" />
+      <workItem from="1683230362948" duration="57000" />
+      <workItem from="1683293197344" duration="1993000" />
+      <workItem from="1683308357999" duration="1107000" />
+      <workItem from="1683366210895" duration="14810000" />
+      <workItem from="1683451292977" duration="33141000" />
+      <workItem from="1683533606165" duration="653000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="90.0" prefWidth="156.0" style="-fx-background-color: rgba(0, 0, 0, 0.5); -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
+   <Label fx:id="astroNameActive" layoutX="10.0" layoutY="1.0" prefHeight="21.0" prefWidth="138.0" text="Name" alignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Bold Italic" size="14.0" />
+      </font>
+   </Label>
+   <Label fx:id="classInfo" layoutX="31.0" layoutY="23.0" prefHeight="14.0" prefWidth="92.0" text="Astronaut-Intern" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Italic" size="12.0" />
+      </font>
+   </Label>
+   <Label layoutX="86.0" layoutY="51.0" prefHeight="14.0" prefWidth="62.0" text="Space walks" textFill="WHITE">
+      <font>
+         <Font name="Arial Italic" size="10.0" />
+      </font>
+   </Label>
+   <Label layoutX="8.0" layoutY="51.0" prefHeight="14.0" prefWidth="54.0" text="Experience" textFill="WHITE">
+      <font>
+         <Font name="Arial Italic" size="10.0" />
+      </font>
+   </Label>
+   <Label fx:id="experienceLabel" layoutX="26.0" layoutY="61.0" prefHeight="28.0" prefWidth="16.0" text="14" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Bold Italic" size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="spaceWalksLabel" layoutX="112.0" layoutY="65.0" prefHeight="23.0" prefWidth="12.0" text="3" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Arial Bold Italic" size="12.0" />
+      </font>
+   </Label>
+   <Line fx:id="energyLine" endX="49.0" layoutX="103.0" layoutY="44.0" startX="-100.0" stroke="#ffb81f" strokeWidth="7.0" />
+</AnchorPane>
