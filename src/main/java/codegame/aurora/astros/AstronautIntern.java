@@ -106,18 +106,13 @@ public class AstronautIntern extends Humans implements Action {
         }
     }
 
-    private double energyLineEndX(int energy, Line astroEnergyLine) {
-        double lineLength = astroEnergyLine.getEndX() - astroEnergyLine.getStartX();
-        return astroEnergyLine.getStartX() + (lineLength * energy / 100);
-    }
-
     public void setExperience(int experience) {
         super.experience = experience;
     }
 
     private void setActiveAstroPane() {
         activePane.setLayoutX(getX()-28);
-        activePane.setLayoutY(getY()-70);
+        activePane.setLayoutY(getY()-73);
         Label astroName = (Label) activePane.lookup("#astroNameActive");
         Label classInfo = (Label) activePane.lookup("#classInfo");
         Label experienceLabel = (Label) activePane.lookup("#experienceLabel");
@@ -127,13 +122,11 @@ public class AstronautIntern extends Humans implements Action {
         experienceLabel.setText(String.valueOf(getExperience()));
         spaceWalksLabel.setText(String.valueOf(getQuantityOfSpaceWalks()));
         astroName.setText(name);
-        astroEnergyLine.setEndX(energyLineEndX(energy, astroEnergyLine));
+        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + (int)(energy*1.56));
         if (!getGroup().getChildren().contains(activePane)) {
             getGroup().getChildren().add(activePane);
         }
-        if (getGroup().getChildren().contains(mainPane)) {
-            getGroup().getChildren().remove(mainPane);
-        }
+        getGroup().getChildren().remove(mainPane);
     }
 
     private void setMainAstroPane() {
@@ -142,13 +135,11 @@ public class AstronautIntern extends Humans implements Action {
         Label astroName = (Label) mainPane.lookup("#astroName");
         Line astroEnergyLine = (Line) mainPane.lookup("#astroEnergyLine");
         astroName.setText(name);
-        astroEnergyLine.setEndX(energyLineEndX(energy, astroEnergyLine));
+        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy);
         if (!getGroup().getChildren().contains(mainPane)) {
             getGroup().getChildren().add(mainPane);
         }
-        if (getGroup().getChildren().contains(activePane)) {
-            getGroup().getChildren().remove(activePane);
-        }
+        getGroup().getChildren().remove(activePane);
     }
 
     private void setAstroPane(AnchorPane pane) {
@@ -157,7 +148,7 @@ public class AstronautIntern extends Humans implements Action {
         Label astroName = (Label) pane.lookup("#astroName");
         Line astroEnergyLine = (Line) pane.lookup("#astroEnergyLine");
         astroName.setText(name);
-        astroEnergyLine.setEndX(energyLineEndX(energy, astroEnergyLine));
+        astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy);
         if (!getGroup().getChildren().contains(pane)) {
             getGroup().getChildren().add(pane);
         }
