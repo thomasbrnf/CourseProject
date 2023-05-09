@@ -1,6 +1,5 @@
 package codegame.aurora.dialogs;
 
-import codegame.aurora.astros.AstronautIntern;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,6 +30,8 @@ public class AstroEditorController {
     private Slider editorExperienceSlider;
     @FXML
     private CheckBox editorDefaultCheckBox;
+    @FXML
+    private Label astroFillWarning;
     private static Stage window;
     int astroClass;
     static String astroName;
@@ -41,69 +42,96 @@ public class AstroEditorController {
         FXMLLoader fxmlLoader = new FXMLLoader(AstroEditorController.class.getResource("Editor.fxml"));
         AnchorPane editorPane = fxmlLoader.load();
         Scene scene = new Scene(editorPane);
+        ToggleGroup group = new ToggleGroup();
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Edit Astronaut");
         window.setResizable(false);
         window.setScene(scene);
-        ToggleGroup group = new ToggleGroup();
+        setToggleGroup(editorPane, group);
+        setActiveAstroInformation(editorPane, group);
+        window.showAndWait();
+    }
+    private boolean isClassSelected() {
+        return astroInternButton.isSelected() || astroButton.isSelected() || managingAstroButton.isSelected();
+    }
+    public static void setActiveAstroInformation(AnchorPane editorPane, ToggleGroup group) {
+        TextField editorNameField = (TextField) editorPane.lookup("#editorNameField");
+        editorNameField.setText(activeAstro.getName());
+        Slider editorEnergySlider = (Slider) editorPane.lookup("#editorEnergySlider");
+        editorEnergySlider.setValue(activeAstro.getEnergy());
+        Slider editorExperienceSlider = (Slider) editorPane.lookup("#editorExperienceSlider");
+        editorExperienceSlider.setValue(activeAstro.getExperience());
+        for (Toggle toggle : group.getToggles()) {
+            RadioButton radioButton = (RadioButton) toggle;
+            if (activeAstro.getAstroClass().equals(radioButton.getText())) {
+                radioButton.setSelected(true);
+                break;
+            }
+        }
+    }
+    private int getSelectedClass() {
+        if (astroInternButton.isSelected()) {
+            return 0;
+        } else if (astroButton.isSelected()) {
+            return 1;
+        } else if (managingAstroButton.isSelected()) {
+            return 2;
+        }
+        return -1;
+    }
+    public static void setToggleGroup(AnchorPane editorPane, ToggleGroup group){
         RadioButton astroInternButton = (RadioButton) editorPane.lookup("#astroInternButton");
         astroInternButton.setToggleGroup(group);
         RadioButton astroButton = (RadioButton) editorPane.lookup("#astroButton");
         astroButton.setToggleGroup(group);
         RadioButton managingAstroButton = (RadioButton) editorPane.lookup("#managingAstroButton");
         managingAstroButton.setToggleGroup(group);
-        AstronautIntern editedAstronaut;
-        if (window.getModality() == Modality.APPLICATION_MODAL) {
-            editedAstronaut = activeAstro;
-        } else {
-            System.out.println("Done");
-            editedAstronaut = new AstronautIntern("", 0, 0);
-        }
-        switch (editedAstronaut.getAstroClass()) {
-            case "Astronaut-Intern" -> astroInternButton.setSelected(true);
-            case "Astronaut" -> astroButton.setSelected(true);
-            case "ManagingAstronaut" -> managingAstroButton.setSelected(true);
-        }
-        TextField editorNameField = (TextField) editorPane.lookup("#editorNameField");
-        editorNameField.setText(editedAstronaut.getName());
-        Slider editorEnergySlider = (Slider) editorPane.lookup("#editorEnergySlider");
-        editorEnergySlider.setValue(editedAstronaut.getEnergy());
-        Slider editorExperienceSlider = (Slider) editorPane.lookup("#editorExperienceSlider");
-        editorExperienceSlider.setValue(editedAstronaut.getExperience());
-        window.showAndWait();
-        if (window.getModality() == Modality.APPLICATION_MODAL) {
-            activeAstro.setName(astroName);
-            activeAstro.setEnergy(astroEnergy);
-            activeAstro.setExperience(astroExperience);
-        }
     }
     @FXML
-    private void defaultBoxActive() {
+    private void onDefaultBoxSelected() {
         if (editorDefaultCheckBox.isSelected()) {
-            editorNameField.setText("Leonid Kadeniuk");
-            managingAstroButton.setSelected(true);
-            editorEnergySlider.setValue(100);
-            editorExperienceSlider.setValue(20);
+            fillDefaultParameters();
             activePane.setDisable(true);
         } else {
-            editorNameField.clear();
-            managingAstroButton.setSelected(false);
-            editorEnergySlider.setValue(0);
-            editorExperienceSlider.setValue(0);
+            clearFields();
             activePane.setDisable(false);
         }
+    }
+    private void fillDefaultParameters() {
+        editorNameField.setText("Leonid Kadeniuk");
+        managingAstroButton.setSelected(true);
+        editorEnergySlider.setValue(100);
+        editorExperienceSlider.setValue(20);
     }
     @FXML
     private void cancelButtonClicked() {window.close();}
     @FXML
     private void applyButtonClicked() {
-        if(astroInternButton.isSelected())astroClass = 0;
-        if(astroButton.isSelected())astroClass = 1;
-        if(managingAstroButton.isSelected())astroClass = 2;
-        astroName = editorNameField.getText();
-        astroEnergy = (int) editorEnergySlider.getValue();
-        astroExperience = (int) editorExperienceSlider.getValue();
-        window.close();
+        if (isInputValid()) {
+            astroClass = getSelectedClass();
+            astroFillWarning.setOpacity(0);
+            astroName = editorNameField.getText();
+            astroEnergy = (int) editorEnergySlider.getValue();
+            astroExperience = (int) editorExperienceSlider.getValue();
+            activeAstro.setName(astroName);
+            activeAstro.setEnergy(astroEnergy);
+            activeAstro.setExperience(astroExperience);
+            window.close();
+        } else {
+            astroFillWarning.setOpacity(1);
+        }
+
+    }
+    private boolean isInputValid() {
+        return !editorNameField.getText().isEmpty() && isClassSelected();
+    }
+    private void clearFields() {
+        editorNameField.clear();
+        astroInternButton.setSelected(false);
+        astroButton.setSelected(false);
+        managingAstroButton.setSelected(false);
+        editorEnergySlider.setValue(0);
+        editorExperienceSlider.setValue(0);
     }
 }

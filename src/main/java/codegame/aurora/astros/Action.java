@@ -7,7 +7,6 @@ public interface Action {
     public void toGoToSpace();
     public void rest();
     public void toDoMaintenance();
-    public TranslateTransition drift();
 
     void delete();
 }

@@ -8,7 +8,8 @@ public abstract class Humans {
     protected int experience;
     protected String name;
     protected Group group;
-    protected Image imageObject;
+    protected Image imageObjectMain;
+    protected Image imageObjectActive;
     protected ImageView imageView;
     protected double x;
     protected double y;

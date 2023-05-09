@@ -15,7 +15,7 @@
     <children>
         <Separator layoutY="56.0" prefHeight="2.0" prefWidth="337.0" />
         <Separator layoutX="5.0" layoutY="240.0" prefHeight="3.0" prefWidth="337.0" />
-        <CheckBox fx:id="editorDefaultCheckBox" layoutX="21.0" layoutY="434.0" mnemonicParsing="false" onAction="#defaultBoxActive" prefHeight="16.0" prefWidth="84.0" text="Default">
+        <CheckBox fx:id="editorDefaultCheckBox" layoutX="21.0" layoutY="434.0" mnemonicParsing="false" onAction="#onDefaultBoxSelected" prefHeight="16.0" prefWidth="84.0" text="Default">
             <font>
                 <Font name="Arial Italic" size="14.0" />
             </font>
@@ -38,7 +38,7 @@
         </Label>
         <Pane fx:id="activePane" layoutX="71.0" layoutY="67.0" prefHeight="338.0" prefWidth="200.0">
             <children>
-                <RadioButton fx:id="astroInternButton" layoutX="14.0" layoutY="73.0" mnemonicParsing="false" text="Intern-Astronaut" textAlignment="CENTER">
+                <RadioButton fx:id="astroInternButton" layoutX="14.0" layoutY="73.0" mnemonicParsing="false" text="Astronaut-Intern" textAlignment="CENTER">
                     <font>
                         <Font name="Arial Italic" size="14.0" />
                     </font>
@@ -60,6 +60,8 @@
                 </TextField>
                 <Slider fx:id="editorExperienceSlider" blockIncrement="1.0" layoutX="8.0" layoutY="204.0" majorTickUnit="10.0" max="20.0" minorTickCount="1" prefHeight="24.0" prefWidth="185.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                 <Slider fx:id="editorEnergySlider" blockIncrement="1.0" layoutX="8.0" layoutY="281.0" minorTickCount="5" prefHeight="24.0" prefWidth="185.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+                <Label layoutX="118.0" layoutY="-1.0" text="*" textFill="RED" />
+                <Label layoutX="118.0" layoutY="52.0" text="*" textFill="RED" />
                 <Label layoutX="78.0" opacity="0.8" text="Name">
                     <font>
                         <Font name="Arial Italic" size="14.0" />
@@ -82,5 +84,10 @@
                 </Label>
             </children>
         </Pane>
+        <Label fx:id="astroFillWarning" layoutX="119.0" layoutY="436.0" opacity="0.0" text="fill all *" textFill="RED">
+            <font>
+                <Font name="Arial Italic" size="14.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

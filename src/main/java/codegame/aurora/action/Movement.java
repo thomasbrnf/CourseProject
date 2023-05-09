@@ -9,7 +9,7 @@ import java.util.List;
 public class Movement {
     private static List<TranslateTransition> transitions = new ArrayList<>();
     private static boolean isRunning = false;
-    public static void drift(){
+/*    public static void drift(){
         for (var object : Main.astros.keySet()) {
             transitions.add(object.drift());
         }
@@ -21,7 +21,7 @@ public class Movement {
         } else if (!isRunning) {
             animationPlay();
         }
-    }
+    }*/
     private static void animationPlay() {
         for(var transition: transitions){
             transition.play();
