@@ -2,6 +2,7 @@ package codegame.aurora.astros;
 
 import codegame.aurora.Main;
 import codegame.aurora.action.Movement;
+import codegame.aurora.tools.Tools;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 
 import java.io.IOException;
+import static codegame.aurora.tools.Tools.astroToEdit;
 
 public class AstronautIntern extends Humans implements Action {
     private int ID = 0;
@@ -29,6 +31,9 @@ public class AstronautIntern extends Humans implements Action {
         Main.root.getChildren().add(getGroup());
         setGroupOnClickHandler();
     }
+    public AstronautIntern(){System.out.println("Base constructor was called");}
+    static  {System.out.println("Static block was called");}
+    {System.out.println("Non-static block was called");}
     public int getExperience() {
         return super.experience;
     }
@@ -150,13 +155,15 @@ public class AstronautIntern extends Humans implements Action {
     }
     private void activateAstro() {
         Main.astros.put(this, true);
-        Main.activeAstro = this;
+        Main.activeAstros.add(this);
+        astroToEdit = this;
         setActiveAstroPane();
         setImage(imageObjectActive);
     }
-    private void deactivateAstro() {
+    public void deactivateAstro() {
         Main.astros.put(this, false);
-        Main.activeAstro = null;
+        Main.activeAstros.remove(this);
+        astroToEdit = null;
         setMainAstroPane();
         setImage(imageObjectMain);
     }
@@ -199,7 +206,7 @@ public class AstronautIntern extends Humans implements Action {
     public void delete() {
         Main.root.getChildren().remove(getGroup());
         Main.astros.remove(this);
-        Main.activeAstro = null;
+        Main.activeAstros.remove(this);
     }
     @Override
     public boolean equals(Object obj) {
