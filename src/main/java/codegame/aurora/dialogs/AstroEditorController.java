@@ -1,5 +1,6 @@
 package codegame.aurora.dialogs;
 
+import codegame.aurora.astros.AstronautIntern;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static codegame.aurora.Main.activeAstro;
+import static codegame.aurora.tools.Tools.astroToEdit;
 
 public class AstroEditorController {
     @FXML
@@ -37,7 +38,6 @@ public class AstroEditorController {
     static String astroName;
     static int astroEnergy;
     static int astroExperience;
-
     public static void showDialog() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AstroEditorController.class.getResource("Editor.fxml"));
         AnchorPane editorPane = fxmlLoader.load();
@@ -57,14 +57,14 @@ public class AstroEditorController {
     }
     public static void setActiveAstroInformation(AnchorPane editorPane, ToggleGroup group) {
         TextField editorNameField = (TextField) editorPane.lookup("#editorNameField");
-        editorNameField.setText(activeAstro.getName());
+        editorNameField.setText(astroToEdit.getName());
         Slider editorEnergySlider = (Slider) editorPane.lookup("#editorEnergySlider");
-        editorEnergySlider.setValue(activeAstro.getEnergy());
+        editorEnergySlider.setValue(astroToEdit.getEnergy());
         Slider editorExperienceSlider = (Slider) editorPane.lookup("#editorExperienceSlider");
-        editorExperienceSlider.setValue(activeAstro.getExperience());
+        editorExperienceSlider.setValue(astroToEdit.getExperience());
         for (Toggle toggle : group.getToggles()) {
             RadioButton radioButton = (RadioButton) toggle;
-            if (activeAstro.getAstroClass().equals(radioButton.getText())) {
+            if (astroToEdit.getAstroClass().equals(radioButton.getText())) {
                 radioButton.setSelected(true);
                 break;
             }
@@ -114,9 +114,10 @@ public class AstroEditorController {
             astroName = editorNameField.getText();
             astroEnergy = (int) editorEnergySlider.getValue();
             astroExperience = (int) editorExperienceSlider.getValue();
-            activeAstro.setName(astroName);
-            activeAstro.setEnergy(astroEnergy);
-            activeAstro.setExperience(astroExperience);
+            astroToEdit.setName(astroName);
+            astroToEdit.setEnergy(astroEnergy);
+            astroToEdit.setExperience(astroExperience);
+            astroToEdit.deactivateAstro();
             window.close();
         } else {
             astroFillWarning.setOpacity(1);

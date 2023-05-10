@@ -1,6 +1,7 @@
 package codegame.aurora.dialogs;
 
 import codegame.aurora.Main;
+import codegame.aurora.tools.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -70,7 +71,7 @@ public class AstroCreatorController {
             int experience = (int) astroExperienceSlider.getValue();
             int energy = (int) astroEnergySlider.getValue();
             try {
-                Main.createAstro(name, astroClass, experience, energy);
+                Tools.registerAstronaut(name, astroClass, experience, energy);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
