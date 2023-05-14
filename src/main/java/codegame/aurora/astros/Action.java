@@ -1,7 +1,5 @@
 package codegame.aurora.astros;
 
-import javafx.animation.TranslateTransition;
-
 public interface Action {
     public void toDoResearching();
     public void toGoToSpace();

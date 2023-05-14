@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/collision.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/habitation_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/maintenance_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/scientific_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/ship.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/HabitationModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/MaintenanceModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/ScientificModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/astro2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/astro2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/astroActive.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/astroActive.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/gray.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/gray.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/action/Movement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/AstronautIntern.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroCreatorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroEditorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Editor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Editor.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +47,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2OpNtoriP3yh1UgQwktd0niXnYK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
@@ -109,7 +128,14 @@
       <workItem from="1683700078377" duration="1193000" />
       <workItem from="1683705655211" duration="156000" />
       <workItem from="1683707217769" duration="149000" />
-      <workItem from="1683710928637" duration="9109000" />
+      <workItem from="1683710928637" duration="9309000" />
+      <workItem from="1683736635748" duration="605000" />
+      <workItem from="1683785209898" duration="22257000" />
+      <workItem from="1683828517572" duration="2507000" />
+      <workItem from="1683873347387" duration="25703000" />
+      <workItem from="1683969230574" duration="10373000" />
+      <workItem from="1684007316971" duration="598000" />
+      <workItem from="1684053605460" duration="11065000" />
     </task>
     <servers />
   </component>
@@ -126,6 +152,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

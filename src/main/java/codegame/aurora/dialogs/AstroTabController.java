@@ -43,7 +43,7 @@ public class AstroTabController {
     }
     private static void addAstronautData(Pane tabPane) {
         int y = 42;
-        for (var astro: Main.astros.keySet()) {
+        for (var astro: Main.astros) {
             Label id = createLabel(String.valueOf(astro.getID()), 16, y);
             Label name = createLabel(astro.getName(), 36, y);
             Label astroClass = createLabel(String.valueOf(astro.getAstroClass()), 155, y);

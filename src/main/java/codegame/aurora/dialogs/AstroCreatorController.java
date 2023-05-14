@@ -1,6 +1,5 @@
 package codegame.aurora.dialogs;
 
-import codegame.aurora.Main;
 import codegame.aurora.tools.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
