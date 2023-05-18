@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/collision.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/habitation_module.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/maintenance_module.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/scientific_module.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ship.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/HabitationModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/MaintenanceModule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/ScientificModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/Module.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/astro2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/astro2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/astroActive.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/astroActive.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/gray.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/gray.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/action/Movement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/astros/AstronautIntern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroCreatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroCreatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroEditorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/dialogs/AstroTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Editor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/codegame/aurora/dialogs/Editor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/HabitationModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/HabitationModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/MaintenanceModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/MaintenanceModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/ScientificModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/codegame/aurora/modules/ScientificModule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +120,11 @@
       <workItem from="1683969230574" duration="10373000" />
       <workItem from="1684007316971" duration="598000" />
       <workItem from="1684053605460" duration="11065000" />
+      <workItem from="1684095330119" duration="135000" />
+      <workItem from="1684242562982" duration="6389000" />
+      <workItem from="1684322395995" duration="711000" />
+      <workItem from="1684335848218" duration="732000" />
+      <workItem from="1684337539836" duration="13968000" />
     </task>
     <servers />
   </component>

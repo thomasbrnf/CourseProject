@@ -7,19 +7,27 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class MaintenanceModule {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MaintenanceModule extends Module{
     private static final int X = 1478;
     private static final int Y = 58;
     private static MaintenanceModule instance = null;
+    private final Map<Rectangle,Boolean> occupationAreas = new HashMap<>();
     private ImageView moduleImage;
     private Group group;
     private Label naming;
     private MaintenanceModule() {
         setImageView();
         setNaming();
+        initializeOccupationAreas();
         setGroup();
         Main.root.getChildren().add(getGroup());
     }
@@ -28,6 +36,19 @@ public class MaintenanceModule {
             instance = new MaintenanceModule();
         }
         return instance;
+    }
+    private void initializeOccupationAreas() {
+        int x = 1530;
+        int y = 125;
+        int width = 110;
+        int height = 200;
+        for (int i = 0; i < 4; i++) {
+            Rectangle area = new Rectangle(x+ i * (width + 20), y , width, height);
+            area.setStroke(Color.YELLOW);
+            area.setStrokeWidth(4);
+            area.setFill(Color.TRANSPARENT);
+            occupationAreas.put(area,false);
+        }
     }
     private void setImageView() {
         Image image = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\maintenance_module.png");
@@ -48,6 +69,10 @@ public class MaintenanceModule {
     private void setGroup() {
         group = new Group();
         group.getChildren().addAll(this.moduleImage, this.naming);
+        for(var obj: occupationAreas.keySet()){
+            group.getChildren().add(obj);
+            obj.toFront();
+        }
     }
     public Group getGroup() {
         return this.group;

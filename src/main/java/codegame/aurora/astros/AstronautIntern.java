@@ -28,13 +28,17 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     public AnchorPane activePane;
     public AstronautIntern(String name, int energy, int experience) {
         super();
+
         setInitialValues(name, energy, experience);
         setImageView();
         setGroup();
+        System.out.println(getGroup().getLayoutX());
+        System.out.println(getGroup().getLayoutY());
         loadFXML();
         Main.root.getChildren().add(getGroup());
+
         setGroupOnClickHandler();
-        checkCollision();
+//        checkCollision();
     }
     public AstronautIntern(){System.out.println("Base constructor was called");}
     static  {System.out.println("Static block was called");}
@@ -54,6 +58,7 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     public String getAstroClass() {
         return "Astronaut-Intern";
     }
+    public ImageView getImageView(){return super.imageView;}
     public double getY() {
         return super.y;
     }
@@ -85,34 +90,52 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     private void setActiveAstroPane() {
         activePane.setLayoutX(getX() - 22);
         activePane.setLayoutY(getY() - 73);
+
         Label astroName = (Label) activePane.lookup("#astroNameActive");
         Label classInfo = (Label) activePane.lookup("#classInfo");
         Label experienceLabel = (Label) activePane.lookup("#experienceLabel");
         Label spaceWalksLabel = (Label) activePane.lookup("#spaceWalksLabel");
+
         Line energyLine = (Line) activePane.lookup("#energyLine");
         Line energyLineBackground = (Line) activePane.lookup("#energyLineBackground");
+
         classInfo.setText(getAstroClass());
+
         experienceLabel.setText(String.valueOf(getExperience()));
+
         spaceWalksLabel.setText(String.valueOf(getQuantityOfSpaceWalks()));
+
         astroName.setText(name);
+
         energyLine.setEndX(energyLine.getStartX() + (int) (energy * 1.56));
+
         energyLine.toFront();
+
         setEnergyLineOpacity(energyLine);
+
         energyLineBackground.setStartX(energyLine.getEndX());
+
         addChild(activePane);
         removeChild(mainPane);
     }
     private void setMainAstroPane() {
-        mainPane.setLayoutX(getX()+3);
+        mainPane.setLayoutX(getX()+2);
         mainPane.setLayoutY(getY());
+
         Label astroName = (Label) mainPane.lookup("#astroName");
         Line astroEnergyLine = (Line) mainPane.lookup("#astroEnergyLine");
         Line astroEnergyLineBackground = (Line) mainPane.lookup("#astroEnergyLineBackground");
+
         astroName.setText(name);
+
         astroEnergyLine.setEndX(astroEnergyLine.getStartX() + energy - 1);
+
         astroEnergyLine.toFront();
+
         setEnergyLineOpacity(astroEnergyLine);
+
         astroEnergyLineBackground.setStartX(astroEnergyLine.getEndX());
+
         addChild(mainPane);
         removeChild(activePane);
     }
@@ -123,6 +146,12 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     private void setGroup() {
         super.group = new Group();
         super.group.getChildren().add(super.imageView);
+        super.group.setLayoutY(getY());
+        super.group.setLayoutX(getX());
+    }
+    public void setXY(double x, double y){
+        super.group.setLayoutX(x);
+        super.group.setLayoutY(y);
     }
     public void setName(String name) {
         super.name = name;
@@ -130,9 +159,10 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     private void setImageView() {
         imageObjectMain = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\astro2.png");
         imageObjectActive = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\astroActive.png");
+
         super.imageView = new ImageView(imageObjectMain);
-        super.imageView.setX(x);
-        super.imageView.setY(y + 17);
+        super.imageView.setLayoutX(x);
+        super.imageView.setLayoutY(y + 17);
     }
     public void setActive() {
         isActive = !isActive;
@@ -146,15 +176,15 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
         super.energy = energy;
     }
     private void setXY() {
-        Rectangle collisionBox = Tools.initializeCollisionBox();
+        /*Rectangle collisionBox = Tools.initializeCollisionBox();
         double x;
         double y;
         do {
             x = Math.floor(Math.random() * collisionBox.getWidth() + collisionBox.getX());
             y = Math.floor(Math.random() * collisionBox.getHeight() + collisionBox.getY());
-        } while (!collisionBox.contains(x, y));
-        super.x = x;
-        super.y = y;
+        } while (!collisionBox.contains(x, y));*/
+        super.x = 400;
+        super.y = 530;
     }
     private void loadFXML() {
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/Astro.fxml"));
@@ -244,22 +274,28 @@ public class AstronautIntern extends Humans implements Action, Cloneable, Compar
     public void toMove(KeyCode code) {
         checkCollision();
         switch (code){
-            case UP -> getGroup().setLayoutY(getGroup().getLayoutY()-3);
-            case DOWN -> getGroup().setLayoutY(getGroup().getLayoutY()+3);
-            case LEFT -> getGroup().setLayoutX(getGroup().getLayoutX()-3);
-            case RIGHT -> getGroup().setLayoutX(getGroup().getLayoutX()+3);
+            case UP -> {getGroup().setLayoutY(getGroup().getLayoutY()-3);
+            System.out.println(getGroup().getLayoutY());}
+            case DOWN -> {getGroup().setLayoutY(getGroup().getLayoutY()+3);
+            System.out.println(getGroup().getLayoutY());}
+            case LEFT -> {getGroup().setLayoutX(getGroup().getLayoutX()-3);
+            System.out.println(getGroup().getLayoutX());}
+            case RIGHT -> {getGroup().setLayoutX(getGroup().getLayoutX()+3);
+            System.out.println(getGroup().getLayoutX());}
         }
     }
     @Override
     public AstronautIntern clone() {
         try {
             AstronautIntern copy = (AstronautIntern) super.clone();
+
             copy.setInitialValues(this.name,this.energy,this.experience);
             copy.setImageView();
             copy.setGroup();
             copy.loadFXML();
             copy.setGroupOnClickHandler();
             copy.setActive();
+
             Main.root.getChildren().add(copy.getGroup());
             Main.astros.add(copy);
             return copy;

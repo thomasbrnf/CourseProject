@@ -7,12 +7,19 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ScientificModule {
     private static final int X = 942;
     private static final int Y = 1180;
+    private final Map<Rectangle,Boolean> occupationAreas = new HashMap<>();
     private static ScientificModule instance = null;
     private ImageView moduleImage;
     private Group group;
@@ -20,6 +27,7 @@ public class ScientificModule {
     private ScientificModule() {
         setImageView();
         setNaming();
+        initializeOccupationAreas();
         setGroup();
         Main.root.getChildren().add(getGroup());
     }
@@ -28,6 +36,19 @@ public class ScientificModule {
             instance = new ScientificModule();
         }
         return instance;
+    }
+    private void initializeOccupationAreas() {
+        int x = 1010;
+        int y = 1280;
+        int width = 130;
+        int height = 200;
+        for (int i = 0; i < 6; i++) {
+            Rectangle area = new Rectangle(x+ i * (width + 40) ,y , width, height);
+            area.setStroke(Color.YELLOW);
+            area.setStrokeWidth(4);
+            area.setFill(Color.TRANSPARENT);
+            occupationAreas.put(area,false);
+        }
     }
     private void setImageView() {
         Image image = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\scientific_module.png");
@@ -48,6 +69,10 @@ public class ScientificModule {
     private void setGroup() {
         group = new Group();
         group.getChildren().addAll(this.moduleImage, this.naming);
+        for(var obj: occupationAreas.keySet()){
+            group.getChildren().add(obj);
+            obj.toFront();
+        }
     }
     public Group getGroup() {
         return this.group;
