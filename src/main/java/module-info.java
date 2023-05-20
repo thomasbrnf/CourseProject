@@ -5,13 +5,13 @@ module codegame.aurora {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
+    requires annotations;
 
     opens codegame.aurora to javafx.fxml;
     exports codegame.aurora;
-    exports codegame.aurora.dialogs;
-    opens codegame.aurora.dialogs to javafx.fxml;
-    exports codegame.aurora.astros;
-    opens codegame.aurora.astros to javafx.fxml;
-    exports codegame.aurora.action;
-    opens codegame.aurora.action to javafx.fxml;
+    exports codegame.aurora.windows;
+    opens codegame.aurora.windows to javafx.fxml;
+    exports codegame.aurora.micro_objects;
+    opens codegame.aurora.micro_objects to javafx.fxml;
 }

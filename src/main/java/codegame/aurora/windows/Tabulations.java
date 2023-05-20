@@ -1,4 +1,4 @@
-package codegame.aurora.dialogs;
+package codegame.aurora.windows;
 
 import codegame.aurora.Main;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +12,9 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class AstroTabController {
+public class Tabulations {
     public static void showDialog() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AstroCreatorController.class.getResource("Tab.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Creations.class.getResource("Tabulations.fxml"));
         Pane tabPane = fxmlLoader.load();
         Scene scene = new Scene(tabPane);
         scene.setFill(Color.TRANSPARENT);
@@ -43,10 +43,10 @@ public class AstroTabController {
     }
     private static void addAstronautData(Pane tabPane) {
         int y = 42;
-        for (var astro: Main.astros.keySet()) {
+        for (var astro: Main.astronauts) {
             Label id = createLabel(String.valueOf(astro.getID()), 16, y);
             Label name = createLabel(astro.getName(), 36, y);
-            Label astroClass = createLabel(String.valueOf(astro.getAstroClass()), 155, y);
+            Label astroClass = createLabel(String.valueOf(astro.getAstronautClass()), 155, y);
             Label experience = createLabel(String.valueOf(astro.getExperience()), 324, y);
             Label energy = createLabel(String.valueOf(astro.getEnergy()), 405, y);
             Label spaceWalks = createLabel(String.valueOf(astro.getQuantityOfSpaceWalks()), 494, y);
