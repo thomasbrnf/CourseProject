@@ -1,6 +1,6 @@
 package codegame.aurora;
 
-import codegame.aurora.astros.AstronautIntern;
+import codegame.aurora.micro_objects.AstronautIntern;
 import codegame.aurora.tools.Tools;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Main extends Application {
     public static Pane root = new Pane();
-    public static List<AstronautIntern> astros = new ArrayList<>();
+    public static List<AstronautIntern> astronauts = new ArrayList<>();
     @Override
     public void start(Stage stage){
         Scene scene = new Scene(root,1280,720);

@@ -1,6 +1,4 @@
-package codegame.aurora.astros;
-
-import codegame.aurora.astros.Astronaut;
+package codegame.aurora.micro_objects;
 
 import java.io.IOException;
 

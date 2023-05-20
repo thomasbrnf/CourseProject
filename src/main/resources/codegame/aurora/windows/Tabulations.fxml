@@ -7,10 +7,10 @@
 
 <AnchorPane prefHeight="24.0" prefWidth="483.0"
             style="-fx-background-color: rgba(0, 0, 0, 0.5);
--fx-background-radius: 10;
--fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 25, 0, 0, 0);"
+            -fx-background-radius: 10;
+            -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 25, 0, 0, 0);"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="codegame.aurora.dialogs.AstroTabController">
+            fx:controller="codegame.aurora.windows.Tabulations">
    <Separator layoutY="36.0" prefHeight="3.0" prefWidth="545.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);"/>
    <Label layoutX="155.0" layoutY="7.0" prefHeight="23.0" prefWidth="42.0" text="Class" textFill="WHITE">
       <font>

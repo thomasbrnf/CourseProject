@@ -10,8 +10,8 @@ module codegame.aurora {
 
     opens codegame.aurora to javafx.fxml;
     exports codegame.aurora;
-    exports codegame.aurora.dialogs;
-    opens codegame.aurora.dialogs to javafx.fxml;
-    exports codegame.aurora.astros;
-    opens codegame.aurora.astros to javafx.fxml;
+    exports codegame.aurora.windows;
+    opens codegame.aurora.windows to javafx.fxml;
+    exports codegame.aurora.micro_objects;
+    opens codegame.aurora.micro_objects to javafx.fxml;
 }

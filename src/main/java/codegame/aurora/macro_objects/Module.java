@@ -1,6 +1,6 @@
-package codegame.aurora.modules;
+package codegame.aurora.macro_objects;
 
-import codegame.aurora.astros.AstronautIntern;
+import codegame.aurora.micro_objects.AstronautIntern;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -8,11 +8,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Module {
-    static int X;
-    static int Y;
+    int X;
+    int Y;
     Map<Container,AstronautIntern> occupationAreas;
     ImageView moduleImage;
     Group group;
@@ -21,20 +22,21 @@ public abstract class Module {
         setImageView();
         setNaming();
         setGroup();
+        setOccupationAreas();
     }
-
+    public Map<Container,AstronautIntern> getOccupationAreas(){
+        return occupationAreas;
+    }
     private void setGroup() {
         group = new Group();
         group.getChildren().addAll(moduleImage,naming);
     }
-
     private void setNaming() {
         naming = new Label(null);
         naming.setOpacity(0.2);
-        naming.setFont(Font.font("Arial", FontWeight.BOLD, 62));
+        naming.setFont(Font.font("Arial", FontWeight.BOLD, 42));
         naming.setTextFill(Color.BLACK);
         naming.setStyle("-fx-font-smoothing-type: lcd; -fx-text-antialiasing: on;");
-        naming.toFront();
     }
     private void setImageView() {
         moduleImage = new ImageView();
@@ -42,6 +44,27 @@ public abstract class Module {
         moduleImage.setY(Y);
     }
     public Group getGroup(){return group;}
+    private void setOccupationAreas(){
+        occupationAreas = new HashMap<>();
+    }
+    public void setAstronaut(AstronautIntern astronautIntern) {
+        for (Map.Entry<Container, AstronautIntern> entry : occupationAreas.entrySet()) {
+            if (entry.getValue() == null) {
+                occupationAreas.put(entry.getKey(), astronautIntern);
+                astronautIntern.setXY(entry.getKey().getX(), entry.getKey().getY());
+                astronautIntern.setActive();
+                break;
+            }
+        }
+    }
+    public void removeAstronaut(AstronautIntern astronautIntern) {
+        for (Map.Entry<Container, AstronautIntern> entry : occupationAreas.entrySet()) {
+            if (entry.getValue() == astronautIntern) {
+                occupationAreas.put(entry.getKey(), null);
+                break;
+            }
+        }
+    }
     static class Container {
         int x;
         int y;
