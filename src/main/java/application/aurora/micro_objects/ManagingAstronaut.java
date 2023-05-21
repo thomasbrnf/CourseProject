@@ -1,4 +1,4 @@
-package codegame.aurora.micro_objects;
+package application.aurora.micro_objects;
 
 import java.io.IOException;
 

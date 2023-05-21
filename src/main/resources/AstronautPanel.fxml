@@ -6,13 +6,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="astroArchPane" prefHeight="118.0" prefWidth="99.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="archPane" prefHeight="118.0" prefWidth="99.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="18.0" prefWidth="102.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-background-radius: 3; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);">
          <children>
-            <Line fx:id="astroEnergyLine" endX="36.5" layoutX="64.0" layoutY="17.0" startX="-62.5" stroke="#ffbf00" strokeWidth="3.0" />
-            <Line fx:id="astroEnergyLineBackground" endX="36.5" layoutX="64.0" layoutY="17.0" startX="36.5" stroke="#654b00" strokeWidth="3.0" />
-            <Label fx:id="astroName" layoutX="3.0" layoutY="3.0" text="Astro Name" textFill="WHITE">
+            <Line fx:id="energyLine" endX="36.5" layoutX="64.0" layoutY="17.0" startX="-62.5" stroke="#ffbf00" strokeWidth="3.0" />
+            <Line fx:id="energyLineBackground" endX="36.5" layoutX="64.0" layoutY="17.0" startX="36.5" stroke="#654b00" strokeWidth="3.0" />
+            <Label fx:id="nameLabel" layoutX="3.0" layoutY="3.0" text="Astronaut name" textFill="WHITE">
                <font>
                   <Font name="Arial Bold Italic" size="10.0" />
                </font>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>codeGame</groupId>
+    <groupId>application</groupId>
     <artifactId>Aurora</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Aurora</name>
@@ -82,10 +82,9 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>codegame.aurora/codegame.aurora.HelloApplication</mainClass>
+                            <mainClass>application.aurora/application.aurora.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

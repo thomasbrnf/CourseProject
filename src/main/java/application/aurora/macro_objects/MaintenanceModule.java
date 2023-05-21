@@ -1,11 +1,14 @@
-package codegame.aurora.macro_objects;
+package application.aurora.macro_objects;
 
-import codegame.aurora.Main;
+import application.aurora.Main;
 import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class MaintenanceModule extends Module{
     private static MaintenanceModule instance = null;
-    private MaintenanceModule() {
+    private MaintenanceModule() throws FileNotFoundException {
         super();
 
         setXY();
@@ -16,18 +19,18 @@ public class MaintenanceModule extends Module{
 
         Main.root.getChildren().add(getGroup());
     }
-    public static MaintenanceModule getInstance() {
+    public static MaintenanceModule getInstance() throws FileNotFoundException {
         if (instance == null) {
             instance = new MaintenanceModule();
         }
         return instance;
     }
     private void setXY() {
-        X = 1478;
-        Y = 58;
+        x = 1478;
+        y = 58;
     }
-    private void setImageView() {
-        Image image = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\maintenance_module.png");
+    private void setImageView() throws FileNotFoundException {
+        Image image = new Image(new FileInputStream("src/images/maintenance_module.png"));
         this.moduleImage.setImage(image);
     }
     private void setNaming() {
@@ -36,8 +39,8 @@ public class MaintenanceModule extends Module{
         naming.setLayoutY(285);
     }
     private void setGroup(){
-        group.setLayoutX(X);
-        group.setLayoutY(Y);
+        group.setLayoutX(x);
+        group.setLayoutY(y);
     }
     private void initializeOccupationAreas() {
         occupationAreas.put(new Container(1555, 70),null);
