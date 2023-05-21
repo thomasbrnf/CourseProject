@@ -1,6 +1,6 @@
-package codegame.aurora.macro_objects;
+package application.aurora.macro_objects;
 
-import codegame.aurora.micro_objects.AstronautIntern;
+import application.aurora.micro_objects.AstronautIntern;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Module {
-    int X;
-    int Y;
+    int x;
+    int y;
     Map<Container,AstronautIntern> occupationAreas;
     ImageView moduleImage;
     Group group;
@@ -40,8 +40,8 @@ public abstract class Module {
     }
     private void setImageView() {
         moduleImage = new ImageView();
-        moduleImage.setX(X);
-        moduleImage.setY(Y);
+        moduleImage.setX(x);
+        moduleImage.setY(y);
     }
     public Group getGroup(){return group;}
     private void setOccupationAreas(){

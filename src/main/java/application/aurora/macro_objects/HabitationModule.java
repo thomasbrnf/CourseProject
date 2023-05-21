@@ -1,11 +1,14 @@
-package codegame.aurora.macro_objects;
+package application.aurora.macro_objects;
 
-import codegame.aurora.Main;
+import application.aurora.Main;
 import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class HabitationModule extends Module{
     private static HabitationModule instance = null;
-    private HabitationModule() {
+    private HabitationModule() throws FileNotFoundException {
         super();
 
         setXY();
@@ -16,15 +19,15 @@ public class HabitationModule extends Module{
 
         Main.root.getChildren().add(getGroup());
     }
-    public static HabitationModule getInstance() {
+    public static HabitationModule getInstance() throws FileNotFoundException {
         if (instance == null) {
             instance = new HabitationModule();
         }
         return instance;
     }
     private void setXY() {
-        X = 100;
-        Y = 97;
+        x = 100;
+        y = 97;
     }
     private void setNaming() {
         naming.setText("Habitation Module");
@@ -32,13 +35,13 @@ public class HabitationModule extends Module{
         naming.setLayoutY(660);
         naming.setRotate(-90);
     }
-    private void setImageView() {
-        Image image = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\habitation_module.png");
+    private void setImageView() throws FileNotFoundException {
+        Image image = new Image(new FileInputStream("src/images/habitation_module.png"));
         moduleImage.setImage(image);
     }
     private void setGroup(){
-        group.setLayoutX(X);
-        group.setLayoutY(Y);
+        group.setLayoutX(x);
+        group.setLayoutY(y);
     }
     private void initializeOccupationAreas() {
         occupationAreas.put(new Container(270, 174),null);

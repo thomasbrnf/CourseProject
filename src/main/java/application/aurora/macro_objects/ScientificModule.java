@@ -1,11 +1,14 @@
-package codegame.aurora.macro_objects;
+package application.aurora.macro_objects;
 
-import codegame.aurora.Main;
+import application.aurora.Main;
 import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class ScientificModule extends Module{
     private static ScientificModule instance = null;
-    private ScientificModule() {
+    private ScientificModule() throws FileNotFoundException {
         super();
 
         setXY();
@@ -16,18 +19,18 @@ public class ScientificModule extends Module{
 
         Main.root.getChildren().add(getGroup());
     }
-    public static ScientificModule getInstance() {
+    public static ScientificModule getInstance() throws FileNotFoundException {
         if (instance == null) {
             instance = new ScientificModule();
         }
         return instance;
     }
     private void setXY() {
-        X = 942;
-        Y = 1180;
+        x = 942;
+        y = 1180;
     }
-    private void setImageView() {
-        Image image = new Image("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\scientific_module.png");
+    private void setImageView() throws FileNotFoundException {
+        Image image = new Image(new FileInputStream("src/images/maintenance_module.png"));
         moduleImage.setImage(image);
     }
     private void setNaming() {
@@ -37,8 +40,8 @@ public class ScientificModule extends Module{
 
     }
     private void setGroup() {
-        group.setLayoutX(X);
-        group.setLayoutY(Y);
+        group.setLayoutX(x);
+        group.setLayoutY(y);
     }
     private void initializeOccupationAreas() {
         occupationAreas.put(new Container(1025, 1220),null);

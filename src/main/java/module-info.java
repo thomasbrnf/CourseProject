@@ -1,4 +1,4 @@
-module codegame.aurora {
+module application.aurora {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,10 +8,10 @@ module codegame.aurora {
     requires java.desktop;
     requires annotations;
 
-    opens codegame.aurora to javafx.fxml;
-    exports codegame.aurora;
-    exports codegame.aurora.windows;
-    opens codegame.aurora.windows to javafx.fxml;
-    exports codegame.aurora.micro_objects;
-    opens codegame.aurora.micro_objects to javafx.fxml;
+    opens application.aurora to javafx.fxml;
+    exports application.aurora;
+    exports application.aurora.windows;
+    opens application.aurora.windows to javafx.fxml;
+    exports application.aurora.micro_objects;
+    opens application.aurora.micro_objects to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package codegame.aurora.windows;
+package application.aurora.windows;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static codegame.aurora.tools.Tools.astronautToEdit;
+import static application.aurora.tools.Tools.astronautToEdit;
 
 public class Parameters {
     @FXML
     private Pane activePane;
     @FXML
-    private TextField NameField;
+    private TextField nameField;
     @FXML
     private RadioButton astronautInternButton;
     @FXML
@@ -25,30 +25,32 @@ public class Parameters {
     @FXML
     private RadioButton managingAstronautButton;
     @FXML
-    private Slider EnergySlider;
+    private Slider energySlider;
     @FXML
-    private Slider ExperienceSlider;
+    private Slider experienceSlider;
     @FXML
-    private CheckBox DefaultCheckBox;
+    private CheckBox defaultCheckBox;
     @FXML
-    private Label FillWarning;
+    private Label fillWarning;
     private static Stage window;
     int astronautClass;
     static String astronautName;
-    static int Energy;
-    static int Experience;
-    public static void showDialog() throws IOException {
+    static int energy;
+    static int experience;
+    public static void displayWindow() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Parameters.class.getResource("Parameters.fxml"));
         AnchorPane editorPane = fxmlLoader.load();
         Scene scene = new Scene(editorPane);
-        ToggleGroup group = new ToggleGroup();
+
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Edit Astronaut");
         window.setResizable(false);
         window.setScene(scene);
+
+        ToggleGroup group = new ToggleGroup();
         setToggleGroup(editorPane, group);
         setInformation(editorPane, group);
+
         window.showAndWait();
     }
     private int getSelectedClass() {
@@ -62,12 +64,15 @@ public class Parameters {
         return -1;
     }
     public static void setInformation(AnchorPane editorPane, ToggleGroup group) {
-        TextField NameField = (TextField) editorPane.lookup("#NameField");
-        NameField.setText(astronautToEdit.getName());
-        Slider EnergySlider = (Slider) editorPane.lookup("#EnergySlider");
-        EnergySlider.setValue(astronautToEdit.getEnergy());
-        Slider ExperienceSlider = (Slider) editorPane.lookup("#ExperienceSlider");
-        ExperienceSlider.setValue(astronautToEdit.getExperience());
+        TextField nameField = (TextField) editorPane.lookup("#nameField");
+        nameField.setText(astronautToEdit.getName());
+
+        Slider energySlider = (Slider) editorPane.lookup("#energySlider");
+        energySlider.setValue(astronautToEdit.getEnergy());
+
+        Slider experienceSlider = (Slider) editorPane.lookup("#experienceSlider");
+        experienceSlider.setValue(astronautToEdit.getExperience());
+
         for (Toggle toggle : group.getToggles()) {
             RadioButton radioButton = (RadioButton) toggle;
             if (astronautToEdit.getAstronautClass().equals(radioButton.getText())) {
@@ -79,14 +84,16 @@ public class Parameters {
     public static void setToggleGroup(AnchorPane anchorPane, ToggleGroup group){
         RadioButton astronautInternButton = (RadioButton) anchorPane.lookup("#astronautInternButton");
         astronautInternButton.setToggleGroup(group);
+
         RadioButton astronautButton = (RadioButton) anchorPane.lookup("#astronautButton");
         astronautButton.setToggleGroup(group);
+
         RadioButton managingAstronautButton = (RadioButton) anchorPane.lookup("#managingAstronautButton");
         managingAstronautButton.setToggleGroup(group);
     }
     @FXML
     private void onDefaultBoxSelected() {
-        if (DefaultCheckBox.isSelected()) {
+        if (defaultCheckBox.isSelected()) {
             fillDefaultParameters();
             activePane.setDisable(true);
         } else {
@@ -100,17 +107,17 @@ public class Parameters {
     private void applyButtonClicked() {
         if (isInputValid()) {
             astronautClass = getSelectedClass();
-            FillWarning.setOpacity(0);
-            astronautName = NameField.getText();
-            Energy = (int) EnergySlider.getValue();
-            Experience = (int) ExperienceSlider.getValue();
+            fillWarning.setOpacity(0);
+            astronautName = nameField.getText();
+            energy = (int) energySlider.getValue();
+            experience = (int) experienceSlider.getValue();
             astronautToEdit.setName(astronautName);
-            astronautToEdit.setEnergy(Energy);
-            astronautToEdit.setExperience(Experience);
+            astronautToEdit.setEnergy(energy);
+            astronautToEdit.setExperience(experience);
             astronautToEdit.setActive();
             window.close();
         } else {
-            FillWarning.setOpacity(1);
+            fillWarning.setOpacity(1);
         }
 
     }
@@ -118,20 +125,20 @@ public class Parameters {
         return astronautInternButton.isSelected() || astronautButton.isSelected() || managingAstronautButton.isSelected();
     }
     private void fillDefaultParameters() {
-        NameField.setText("Leonid Kadeniuk");
+        nameField.setText("Leonid Kadeniuk");
         managingAstronautButton.setSelected(true);
-        EnergySlider.setValue(100);
-        ExperienceSlider.setValue(20);
+        energySlider.setValue(100);
+        experienceSlider.setValue(20);
     }
     private boolean isInputValid() {
-        return !NameField.getText().isEmpty() && isClassSelected();
+        return !nameField.getText().isEmpty() && isClassSelected();
     }
     private void clearFields() {
-        NameField.clear();
+        nameField.clear();
         astronautInternButton.setSelected(false);
         astronautButton.setSelected(false);
         managingAstronautButton.setSelected(false);
-        EnergySlider.setValue(0);
-        ExperienceSlider.setValue(0);
+        energySlider.setValue(0);
+        experienceSlider.setValue(0);
     }
 }

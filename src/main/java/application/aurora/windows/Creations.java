@@ -1,6 +1,6 @@
-package codegame.aurora.windows;
+package application.aurora.windows;
 
-import codegame.aurora.tools.Tools;
+import application.aurora.tools.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ public class Creations {
     @FXML
     private Pane activePane;
     @FXML
-    private TextField NameField;
+    private TextField nameField;
     @FXML
     private RadioButton astronautInternButton;
     @FXML
@@ -24,26 +24,29 @@ public class Creations {
     @FXML
     private RadioButton managingAstronautButton;
     @FXML
-    private Slider EnergySlider;
+    private Slider energySlider;
     @FXML
-    private Slider ExperienceSlider;
+    private Slider experienceSlider;
     @FXML
-    private CheckBox DefaultCheckBox;
+    private CheckBox defaultCheckBox;
     @FXML
-    private Label FillWarning;
+    private Label fillWarning;
     private static Stage window;
-    public static void showDialog() {
+    public static void displayWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Creations.class.getResource("Creations.fxml"));
-            AnchorPane astroPane = fxmlLoader.load();
-            Scene scene = new Scene(astroPane);
+            AnchorPane anchorPane = fxmlLoader.load();
+            Scene scene = new Scene(anchorPane);
+
             window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle("Create Astronaut");
             window.setResizable(false);
             window.setScene(scene);
-            setToggleGroup(astroPane);
+
+            setToggleGroup(anchorPane);
+
             window.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -52,8 +55,10 @@ public class Creations {
         ToggleGroup group = new ToggleGroup();
         RadioButton astronautInternButton = (RadioButton) Pane.lookup("#astronautInternButton");
         astronautInternButton.setToggleGroup(group);
+
         RadioButton astronautButton = (RadioButton) Pane.lookup("#astronautButton");
         astronautButton.setToggleGroup(group);
+
         RadioButton managingAstronautButton = (RadioButton) Pane.lookup("#managingAstronautButton");
         managingAstronautButton.setToggleGroup(group);
     }
@@ -64,23 +69,26 @@ public class Creations {
     @FXML
     private void onCreateButtonClicked() {
         if (isInputValid()) {
-            FillWarning.setOpacity(0);
-            String name = NameField.getText();
-            int astroClass = getSelectedClass();
-            int experience = (int) ExperienceSlider.getValue();
-            int energy = (int) EnergySlider.getValue();
+            fillWarning.setOpacity(0);
+
+            String name = nameField.getText();
+
+            int objectClass = getSelectedClass();
+            int experience = (int) experienceSlider.getValue();
+            int energy = (int) energySlider.getValue();
+
             try {
-                Tools.registerAstronaut(name, astroClass, experience, energy);
+                Tools.registerAstronaut(name, objectClass, experience, energy);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            FillWarning.setOpacity(1);
+            fillWarning.setOpacity(1);
         }
     }
     @FXML
     private void onDefaultBoxSelected() {
-        if (DefaultCheckBox.isSelected()) {
+        if (defaultCheckBox.isSelected()) {
             fillDefaultParameters();
             activePane.setDisable(true);
         } else {
@@ -89,7 +97,7 @@ public class Creations {
         }
     }
     private boolean isInputValid() {
-        return !NameField.getText().isEmpty() && isClassSelected();
+        return !nameField.getText().isEmpty() && isClassSelected();
     }
     private boolean isClassSelected() {
         return astronautInternButton.isSelected() || astronautButton.isSelected() || managingAstronautButton.isSelected();
@@ -105,18 +113,18 @@ public class Creations {
         return -1;
     }
     private void fillDefaultParameters() {
-        NameField.setText("Leonid Kadeniuk");
+        nameField.setText("Leonid Kadeniuk");
         managingAstronautButton.setSelected(true);
-        EnergySlider.setValue(100);
-        ExperienceSlider.setValue(20);
+        energySlider.setValue(100);
+        experienceSlider.setValue(20);
     }
     private void clearFields() {
-        NameField.clear();
+        nameField.clear();
         astronautInternButton.setSelected(false);
         astronautButton.setSelected(false);
         managingAstronautButton.setSelected(false);
-        EnergySlider.setValue(0);
-        ExperienceSlider.setValue(0);
+        energySlider.setValue(0);
+        experienceSlider.setValue(0);
     }
 
 }
