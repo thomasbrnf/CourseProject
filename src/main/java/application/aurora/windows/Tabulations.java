@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -64,7 +65,6 @@ public class Tabulations {
         window.showAndWait();
     }
     private static void addAstronautData(AnchorPane pane, ObservableList<AstronautIntern> list, int margin) {
-        if (list == null) {return;}
         for (var astronaut : list) {
             if (astronaut == null) {continue;}
             Label id = createLabel(String.valueOf(astronaut.getID()), 16, margin);
@@ -73,7 +73,7 @@ public class Tabulations {
             Label experienceObject = createLabel(String.valueOf(astronaut.getExperience()), 320, margin);
             Label energyObject = createLabel(String.valueOf(astronaut.getEnergy()), 385, margin);
             Label spaceWalks = createLabel(String.valueOf(astronaut.getQuantityOfSpaceWalks()), 474, margin);
-            Label coordinates = createLabel(astronaut.getGroup().getLayoutX() + ", " + astronaut.getGroup().getLayoutY(), 555, margin);
+            Label coordinates = createLabel((int)astronaut.getGroup().getLayoutX() + ", " + (int)astronaut.getGroup().getLayoutY(), 550, margin);
             pane.getChildren().addAll(id, nameObject, objectClass, experienceObject, energyObject, spaceWalks, coordinates);
 
             margin += 20;
@@ -110,6 +110,7 @@ public class Tabulations {
         label.setLayoutX(x);
         label.setLayoutY(y);
         label.setTextFill(Color.WHITE);
+        label.setTextAlignment(TextAlignment.CENTER);
 
         return label;
     }

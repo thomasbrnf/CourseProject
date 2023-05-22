@@ -5,29 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/NameComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/ship.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/macro_objects/HabitationModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/HabitationModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/macro_objects/MaintenanceModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/macro_objects/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/macro_objects/ScientificModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/micro_objects/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/Astronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/micro_objects/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/micro_objects/ManagingAstronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/ManagingAstronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/windows/Creations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Creations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/windows/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/codegame/aurora/windows/Tabulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AstronautOnActiveBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AstronautDetailedPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AstronautTopBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AstronautPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codegame/aurora/windows/Creations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/aurora/windows/Creations.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codegame/aurora/windows/Parameters.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/aurora/windows/Parameters.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/codegame/aurora/windows/Tabulations.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application/aurora/windows/Tabulations.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +78,7 @@
   <component name="RunManager">
     <configuration name="Aurora" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="application.aurora.Main" />
-      <module name="Aurora" />
+      <module name="CourseProject" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

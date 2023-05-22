@@ -30,7 +30,7 @@ public class ScientificModule extends Module{
         y = 1180;
     }
     private void setImageView() throws FileNotFoundException {
-        Image image = new Image(new FileInputStream("src/images/maintenance_module.png"));
+        Image image = new Image(new FileInputStream("src/images/scientific_module.png"));
         moduleImage.setImage(image);
     }
     private void setNaming() {
