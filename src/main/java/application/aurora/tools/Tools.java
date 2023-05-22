@@ -30,17 +30,17 @@ import static application.aurora.Main.root;
 public class Tools {
     public static final double windowSizeX = 1280;
     public static final double windowSizeY = 720;
-    public static AstronautIntern astronautToEdit = null;
+    public static AstronautIntern electedAstronaut = null;
     public static List<AstronautIntern> activeAstronauts = new ArrayList<>();
     public static List<Module> modules = new ArrayList<>();
     public static void setOnKeyPressed(KeyEvent keyEvent){
         try {
             switch (keyEvent.getCode()) {
-                case F1 -> Creations.displayWindow();
-                case F2 -> {if(astronautToEdit != null) Parameters.displayWindow();}
-                case F7 -> {if(!activeAstronauts.isEmpty())cloneObject();}
+                case M -> Creations.displayWindow();
+                case U -> {if(electedAstronaut != null) Parameters.displayWindow();}
+                case C -> {if(electedAstronaut != null)cloneObject();}
                 case TAB -> Tabulations.displayWindow();
-                case DELETE -> {if(!activeAstronauts.isEmpty())deleteObject();}
+                case DELETE -> {if(electedAstronaut != null)deleteObject();}
                 case ESCAPE -> clearActiveObjects();
                 case UP,DOWN,LEFT,RIGHT -> updateObjectsPosition(keyEvent.getCode());
                 case W, S, A, D -> moveScene(keyEvent.getCode());
@@ -70,7 +70,8 @@ public class Tools {
         modules.add(ScientificModule.getInstance());
     }
     public static void initializeEnvironment() throws FileNotFoundException {
-        ImageView ship = new ImageView("C:\\Users\\Artem\\IdeaProjects\\Aurora\\src\\images\\map.png");
+        Image image = new Image(new FileInputStream("src/images/map.png"));
+        ImageView ship = new ImageView(image);
         root.getChildren().add(ship);
 
         double centerX = ship.getImage().getWidth() / 2;
@@ -180,7 +181,7 @@ public class Tools {
     private static void clearActiveObjects(){
         List<AstronautIntern> copy = List.copyOf(activeAstronauts);
         for (var astronaut : copy) {
-            astronaut.setActive();
+            astronaut.setElect();
         }
         activeAstronauts.clear();
     }
@@ -202,6 +203,6 @@ public class Tools {
             astronaut.delete();
         }
         activeAstronauts.clear();
-        astronautToEdit = null;
+        electedAstronaut = null;
     }
 }

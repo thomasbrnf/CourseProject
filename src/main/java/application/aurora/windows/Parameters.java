@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static application.aurora.tools.Tools.astronautToEdit;
+import static application.aurora.tools.Tools.electedAstronaut;
 
 public class Parameters {
     @FXML
@@ -65,17 +65,17 @@ public class Parameters {
     }
     public static void setInformation(AnchorPane editorPane, ToggleGroup group) {
         TextField nameField = (TextField) editorPane.lookup("#nameField");
-        nameField.setText(astronautToEdit.getName());
+        nameField.setText(electedAstronaut.getName());
 
         Slider energySlider = (Slider) editorPane.lookup("#energySlider");
-        energySlider.setValue(astronautToEdit.getEnergy());
+        energySlider.setValue(electedAstronaut.getEnergy());
 
         Slider experienceSlider = (Slider) editorPane.lookup("#experienceSlider");
-        experienceSlider.setValue(astronautToEdit.getExperience());
+        experienceSlider.setValue(electedAstronaut.getExperience());
 
         for (Toggle toggle : group.getToggles()) {
             RadioButton radioButton = (RadioButton) toggle;
-            if (astronautToEdit.getAstronautClass().equals(radioButton.getText())) {
+            if (electedAstronaut.getAstronautClass().equals(radioButton.getText())) {
                 radioButton.setSelected(true);
                 break;
             }
@@ -111,10 +111,10 @@ public class Parameters {
             astronautName = nameField.getText();
             energy = (int) energySlider.getValue();
             experience = (int) experienceSlider.getValue();
-            astronautToEdit.setName(astronautName);
-            astronautToEdit.setEnergy(energy);
-            astronautToEdit.setExperience(experience);
-            astronautToEdit.setActive();
+            electedAstronaut.setName(astronautName);
+            electedAstronaut.setEnergy(energy);
+            electedAstronaut.setExperience(experience);
+            electedAstronaut.setElect();
             window.close();
         } else {
             fillWarning.setOpacity(1);
