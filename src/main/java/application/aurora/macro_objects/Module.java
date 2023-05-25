@@ -52,6 +52,7 @@ public abstract class Module {
             if (entry.getValue() == null) {
                 occupationAreas.put(entry.getKey(), astronautIntern);
                 astronautIntern.setXY(entry.getKey().getX(), entry.getKey().getY());
+                if(astronautIntern.elect)astronautIntern.setElect();
                 astronautIntern.setActive();
                 break;
             }

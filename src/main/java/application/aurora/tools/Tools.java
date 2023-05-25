@@ -36,11 +36,11 @@ public class Tools {
     public static void setOnKeyPressed(KeyEvent keyEvent){
         try {
             switch (keyEvent.getCode()) {
-                case M -> Creations.displayWindow();
-                case U -> {if(electedAstronaut != null) Parameters.displayWindow();}
-                case C -> {if(electedAstronaut != null)cloneObject();}
+                case F1 -> Creations.displayWindow();
+                case F2 -> {if(electedAstronaut != null) Parameters.displayWindow();}
+                case C -> {if(electedAstronaut != null)electedAstronaut.clone();}
                 case TAB -> Tabulations.displayWindow();
-                case DELETE -> {if(electedAstronaut != null)deleteObject();}
+                case DELETE -> {if(electedAstronaut != null)electedAstronaut.delete();}
                 case ESCAPE -> clearActiveObjects();
                 case UP,DOWN,LEFT,RIGHT -> updateObjectsPosition(keyEvent.getCode());
                 case W, S, A, D -> moveScene(keyEvent.getCode());
@@ -185,24 +185,11 @@ public class Tools {
         }
         activeAstronauts.clear();
     }
-    private static void cloneObject() {
-        List<AstronautIntern> copy = List.copyOf(activeAstronauts);
-        for (var astronaut : copy) {
-            astronaut.clone();
-        }
-    }
     private static void writeConsoleToFile() throws FileNotFoundException {
         PrintStream consoleOut = System.out;
         File file = new File("logs.txt");
         FileOutputStream fos = new FileOutputStream(file);
         PrintStream ps = new PrintStream(fos);
         System.setOut(ps);
-    }
-    private static void deleteObject() throws FileNotFoundException {
-        for (var astronaut : activeAstronauts) {
-            astronaut.delete();
-        }
-        activeAstronauts.clear();
-        electedAstronaut = null;
     }
 }

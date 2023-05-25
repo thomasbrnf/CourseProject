@@ -25,7 +25,8 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     private int quantityOfSpaceWalks = 0;
     private static int totalObjectsCreated = 0;
     private double x, y;
-    private boolean isActive, elect;
+    private boolean isActive;
+    public boolean elect;
     private String name;
     private AnchorPane mainPane;
     private AnchorPane activePane;
@@ -113,7 +114,9 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
         mainPane.setLayoutX(getX()+2);
         mainPane.setLayoutY(getY());
 
-        createLabel(mainPane.lookup("#nameLabel"), name);
+        Label nameLabel = createLabel(mainPane.lookup("#nameLabel"), name);
+        nameLabel.setOpacity(0.5);
+        if(isActive)nameLabel.setOpacity(1);
 
         Line energyLine = createLine(mainPane.lookup("#energyLine"),energy - 1, null);
         createLine(mainPane.lookup("#energyLineBackground"),null, (int) energyLine.getStartX());
@@ -121,9 +124,10 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
         addChild(mainPane);
         removeChild(activePane);
     }
-    private void createLabel(Node node, String text){
+    private Label createLabel(Node node, String text){
         Label label = (Label) node;
         label.setText(text);
+        return label;
     }
     private Line createLine(Node node, Integer endPosition, Integer startPosition){
         Line line = (Line) node;
@@ -156,12 +160,11 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
         }
     }
     private void elect() {
-        if(isActive)deactivate();
         Tools.electedAstronaut = this;
         setElectedPane();
         setImage(imageObjectElected);
     }
-    private void deselect() {
+    public void deselect() {
         Tools.electedAstronaut = null;
         setMainPane();
         setImage(imageObjectMain);
@@ -178,7 +181,6 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
         Main.root.getChildren().remove(getGroup());
         Main.astronauts.remove(this);
         HabitationModule.getInstance().removeAstronaut(this);
-
     }
     public void setGroupOnClickHandler() {
         getGroup().setOnMouseClicked(event -> {
@@ -201,9 +203,11 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     }
     private void activate() {
         Tools.activeAstronauts.add(this);
+        setMainPane();
     }
     private void deactivate() {
         Tools.activeAstronauts.remove(this);
+        setMainPane();
     }
     public void toDoResearching() {
         this.experience++;
@@ -241,7 +245,6 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
             copy.setGroup();
             copy.loadFXML();
             copy.setGroupOnClickHandler();
-            copy.setElect();
 
             Main.root.getChildren().add(copy.getGroup());
             Main.astronauts.add(copy);
