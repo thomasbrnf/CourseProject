@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +164,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java</url>
           <line>11</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
