@@ -1,17 +1,22 @@
 package application.aurora.micro_objects;
 
 import application.aurora.Main;
-import application.aurora.macro_objects.HabitationModule;
 import application.aurora.tools.Tools;
+import application.aurora.tools.tools_micro_objects.AstronautDestination;
+import application.aurora.tools.tools_micro_objects.AstronautType;
+import application.aurora.tools.tools_micro_objects.ToolsForAstronaut;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
+import javafx.scene.shape.*;
+import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileInputStream;
@@ -20,39 +25,40 @@ import java.io.IOException;
 
 public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     private int ID;
-    private int energy;
-    private int experience;
-    private int quantityOfSpaceWalks = 0;
-    private static int totalObjectsCreated = 0;
+    int energy;
+    private double experience;
     private double x, y;
-    private boolean isActive;
-    public boolean elect;
-    private String name;
-    private AnchorPane mainPane;
-    private AnchorPane activePane;
+    private boolean isActive, elect, inModule, onMission;
+    protected String name;
+    protected AnchorPane mainPane;
+    protected AnchorPane activePane;
     private Group group;
-    private ImageView imageView;
-    private Image imageObjectMain, imageObjectElected;
+    protected ImageView imageView;
+    protected AstronautDestination destination;
+    private ImageView backgroundView;
+    private Line energyLine;
+    private Label nameLabel;
     public AstronautIntern(String name, int energy, int experience) throws FileNotFoundException {
 
         setInitialValues(name, energy, experience);
         setImageView();
+        setImageBackground();
         setGroup();
         loadFXML();
+        setInModule(false);
+        setXY(700,700);
         Main.root.getChildren().add(getGroup());
-
-        setGroupOnClickHandler();
 
         System.out.println(this);
     }
     public AstronautIntern(){System.out.println("Base constructor was called");}
     static  {System.out.println("Static block was called");}
     {System.out.println("Non-static block was called");}
-    private void setInitialValues(String name, int energy, int experience) {
+    private void setInitialValues(String name, int energy, double experience) {
         setXY();
         setName(name);
 
-        this.ID = ++totalObjectsCreated;
+        this.ID = ++ToolsForAstronaut.totalObjectsCreated;
         this.energy = energy;
         this.experience = experience;
     }
@@ -64,25 +70,78 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
         this.x = 0;
         this.y = 0;
     }
+    public void setID(int id){
+        this.ID = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
-    public void setExperience(int experience) {
+    public void setExperience(double experience) {
         this.experience = experience;
     }
     public void setEnergy(int energy) {
         this.energy = energy;
     }
-    private void setImage(Image image) {
-        this.imageView.setImage(image);
-    }
-    private void setImageView() throws FileNotFoundException {
-        imageObjectMain = new Image(new FileInputStream("src/images/astronaut.png"));
-        imageObjectElected = new Image(new FileInputStream("src/images/astronautActive.png"));
+    private void setImageBackground() throws FileNotFoundException {
+        Image imageBackground = new Image(new FileInputStream("src/images/objectBackground.png"));
 
-        this.imageView = new ImageView(imageObjectMain);
-        this.imageView.setLayoutX(x);
-        this.imageView.setLayoutY(y + 17);
+        backgroundView = new ImageView(imageBackground);
+        backgroundView.setLayoutX(x);
+        backgroundView.setLayoutY(y + 17);
+    }
+    protected void setImageView() throws FileNotFoundException {
+        Image imageObjectMain = new Image(new FileInputStream("src/images/astronautIntern.png"));
+
+        imageView = new ImageView(imageObjectMain);
+        imageView.setLayoutX(x);
+        imageView.setLayoutY(y + 17);
+    }
+    protected void setElectedPane() {
+        ToolsForAstronaut.setActivePaneLayout(activePane, getX(),getY());
+
+        ToolsForAstronaut.createLabel(activePane.lookup("#nameLabel"), name);
+        ToolsForAstronaut.createLabel(activePane.lookup("#classObject"),getAstronautClass());
+        ToolsForAstronaut.createLabel(activePane.lookup("#experienceLabel"),String.valueOf(getExperience()));
+        ToolsForAstronaut.createLabel(activePane.lookup("#spaceWalksLabel"),String.valueOf(0));
+
+        Line energyLine = ToolsForAstronaut.createLine(activePane.lookup("#energyLine"),
+                (int) (energy * 1.56), null,energy);
+        ToolsForAstronaut.createLine(activePane.lookup("#energyLineBackground"), null,
+                (int) energyLine.getStartX(),energy);
+
+        addChild(activePane);
+        removeChild(mainPane);
+    }
+    public void setOnMission(boolean b){
+        this.onMission = b;
+    }
+    private void setMainPane() {
+        mainPane.setLayoutX(getX()+3);
+        mainPane.setLayoutY(getY());
+
+        nameLabel = ToolsForAstronaut.createLabel(mainPane.lookup("#nameLabel"), name);
+        nameLabel.setOpacity(0.5);
+
+
+        energyLine = ToolsForAstronaut.createLine(mainPane.lookup("#energyLine"),
+                energy - 1, null, energy);
+        ToolsForAstronaut.createLine(mainPane.lookup("#energyLineBackground"),null,
+                (int) energyLine.getStartX(), energy);
+
+        addChild(mainPane);
+        removeChild(activePane);
+    }
+    public void setDestination(AstronautDestination destination){
+        this.destination = destination;
+    }
+    private void setGroup() {
+        this.group = new Group();
+        this.group.getChildren().add(this.imageView);
+        this.group.setLayoutY(getY());
+        this.group.setLayoutX(getX());
+    }
+    public void setInModule(boolean inModule){
+        this.inModule = inModule;
     }
     private void loadFXML() {
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/AstronautPanel.fxml"));
@@ -95,63 +154,7 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
             throw new RuntimeException(e);
         }
     }
-    private void setElectedPane() {
-        activePane.setLayoutX(getX() - 22);
-        activePane.setLayoutY(getY() - 73);
-
-        createLabel(activePane.lookup("#nameLabel"), name);
-        createLabel(activePane.lookup("#classObject"),getAstronautClass());
-        createLabel(activePane.lookup("#experienceLabel"),String.valueOf(getExperience()));
-        createLabel(activePane.lookup("#spaceWalksLabel"),String.valueOf(getQuantityOfSpaceWalks()));
-
-        Line energyLine = createLine(activePane.lookup("#energyLine"),(int) (energy * 1.56), null);
-        createLine(activePane.lookup("#energyLineBackground"), null, (int) energyLine.getStartX());
-
-        addChild(activePane);
-        removeChild(mainPane);
-    }
-    private void setMainPane() {
-        mainPane.setLayoutX(getX()+2);
-        mainPane.setLayoutY(getY());
-
-        Label nameLabel = createLabel(mainPane.lookup("#nameLabel"), name);
-        nameLabel.setOpacity(0.5);
-        if(isActive)nameLabel.setOpacity(1);
-
-        Line energyLine = createLine(mainPane.lookup("#energyLine"),energy - 1, null);
-        createLine(mainPane.lookup("#energyLineBackground"),null, (int) energyLine.getStartX());
-
-        addChild(mainPane);
-        removeChild(activePane);
-    }
-    private Label createLabel(Node node, String text){
-        Label label = (Label) node;
-        label.setText(text);
-        return label;
-    }
-    private Line createLine(Node node, Integer endPosition, Integer startPosition){
-        Line line = (Line) node;
-        if(endPosition != null){
-            line.setEndX(line.getStartX() + endPosition);
-            line.toFront();
-            setLineOpacity(line);
-        }else{
-            line.setStartX(startPosition);
-        }
-        return line;
-    }
-    private void setLineOpacity(Line line){
-        if(energy == 0) line.setOpacity(0);
-        else {
-            line.setOpacity(1);}
-    }
-    private void setGroup() {
-        this.group = new Group();
-        this.group.getChildren().add(this.imageView);
-        this.group.setLayoutY(getY());
-        this.group.setLayoutX(getX());
-    }
-    public void setElect() {
+    public void toggleElect(){
         elect = !elect;
         if (elect) {
             elect();
@@ -159,40 +162,35 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
             deselect();
         }
     }
-    private void elect() {
+    private void elect(){
+        if(Tools.electedAstronaut != null)Tools.electedAstronaut.toggleElect();
         Tools.electedAstronaut = this;
-        setElectedPane();
-        setImage(imageObjectElected);
+        Tools.electedAstronaut.setElectedPane();
+        Tools.electedAstronaut.addChild(backgroundView);
+        backgroundView.toBack();
     }
     public void deselect() {
-        Tools.electedAstronaut = null;
-        setMainPane();
-        setImage(imageObjectMain);
+        if (Tools.electedAstronaut != null) {
+            Tools.electedAstronaut.removeChild(backgroundView);
+            Tools.electedAstronaut.setMainPane();
+            Tools.electedAstronaut = null;
+        }
     }
-    private void addChild(Node node) {
+    void addChild(Node node) {
         if (!getGroup().getChildren().contains(node)) {
             getGroup().getChildren().add(node);
         }
     }
-    private void removeChild(Node node) {
+    void removeChild(Node node) {
         getGroup().getChildren().remove(node);
     }
     public void delete() throws FileNotFoundException {
-        Main.root.getChildren().remove(getGroup());
+        Main.root.getChildren().remove(this.getGroup());
         Main.astronauts.remove(this);
-        HabitationModule.getInstance().removeAstronaut(this);
+        Tools.activeAstronauts.remove(this);
+        Tools.electedAstronaut = null;
     }
-    public void setGroupOnClickHandler() {
-        getGroup().setOnMouseClicked(event -> {
-            if (event.getButton().equals(MouseButton.PRIMARY)) {
-                setActive();
-            }
-            if (event.getButton().equals(MouseButton.SECONDARY)) {
-                setElect();
-            }
-        });
-    }
-    public void setActive() {
+    public void toggleActive() {
         if(elect)return;
         isActive = !isActive;
         if (isActive) {
@@ -203,37 +201,77 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     }
     private void activate() {
         Tools.activeAstronauts.add(this);
-        setMainPane();
+        nameLabel.setOpacity(1);
     }
     private void deactivate() {
         Tools.activeAstronauts.remove(this);
-        setMainPane();
+        nameLabel.setOpacity(0.5);
     }
-    public void toDoResearching() {
-        this.experience++;
+    public void updateExperienceAfterExperiments(double amountOfExperience) {
+        if (getExperience() >= 30) return;
+        setExperience(getExperience() + amountOfExperience);
+        setEnergy(getEnergy() - 1);
+        updateEnergyLine(getEnergy(),1);
     }
-    public void toGoToSpace() {
-        this.quantityOfSpaceWalks++;
-        this.experience++;
+    public void rest(int energyIncreaseAmount) {
+        setEnergy(getEnergy() + energyIncreaseAmount);
+        updateEnergyLine(getEnergy(), 0.5);
+        ToolsForAstronaut.setLineOpacity(energyLine, energy);
     }
-    public void rest() {
-        this.energy++;
+    public boolean intersects(AstronautIntern other) {
+        return this.getGroup().getBoundsInParent().intersects(other.getGroup().getBoundsInParent());
     }
-    public void toDoMaintenance() {
-        this.experience++;
+    public void updateExperienceAfterMaintenance(int variant) {
+        if (getExperience() >= 30) return;
+        if (variant == 0) {
+            double newExperience = getExperience() - 2;
+            setExperience(Math.max(newExperience, 0));
+            int newEnergy = getEnergy() - 5;
+            if (newEnergy >= 0) {
+                setEnergy(newEnergy);
+            }
+            updateEnergyLine(getEnergy(), 0.5);
+        } else {
+            setExperience(getExperience() + 1);
+            int newEnergy = getEnergy() - 3;
+            if (newEnergy >= 0) {
+                setEnergy(newEnergy);
+            }
+            updateEnergyLine(getEnergy(), 0.5);
+        }
+    }
+    protected void updateEnergyLine(double energy, double duration) {
+        double newEndX = energyLine.getStartX() + energy - 1;
+
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(duration),
+                new KeyValue(energyLine.endXProperty(), newEndX));
+
+        Timeline timeline = new Timeline(keyFrame);
+        timeline.play();
+    }
+    public boolean isActive() {
+        return isActive;
+    }
+    public boolean inModule() {
+        return inModule;
+    }
+    public boolean isElect() {
+        return elect;
+    }
+    public boolean onMission() {
+        return onMission;
     }
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof AstronautIntern astronaut) {
             return this.name.equals(astronaut.name) && this.experience == astronaut.experience &&
-                    this.energy == astronaut.energy && this.quantityOfSpaceWalks == astronaut.quantityOfSpaceWalks
-                    && this.ID == astronaut.ID;
+                    this.energy == astronaut.energy && this.ID == astronaut.ID;
         }
         return false;
     }
     @Override
     public String toString() {
-        return ID + '\t' + name + '\t' + "AstronautIntern " + '\t' + experience + '\t' + energy + '\t' + quantityOfSpaceWalks;
+        return ID + '\t' + name + '\t' + "AstronautIntern " + '\t' + experience + '\t' + energy;
     }
     @Override
     public AstronautIntern clone() {
@@ -241,11 +279,13 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
             AstronautIntern copy = (AstronautIntern) super.clone();
 
             copy.setInitialValues(this.name+"*",this.energy,this.experience);
+
             copy.setImageView();
             copy.setGroup();
             copy.loadFXML();
-            copy.setGroupOnClickHandler();
-
+            copy.toggleActive();
+            copy.setXY(getGroup().getLayoutX(),getGroup().getLayoutY());
+            copy.elect = false;
             Main.root.getChildren().add(copy.getGroup());
             Main.astronauts.add(copy);
             return copy;
@@ -257,16 +297,28 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     public int compareTo(@NotNull AstronautIntern o) {
         int result = 0;
         result += Integer.compare(this.getEnergy(), o.getEnergy());
-        result += Integer.compare(this.getExperience(), o.getExperience());
-        result += Integer.compare(this.getQuantityOfSpaceWalks(), o.getQuantityOfSpaceWalks());
+        result += Double.compare(this.getExperience(), o.getExperience());
         result += this.getName().compareTo(o.getName());
         return result;
     }
-    public int getExperience() {
+    public double getExperience() {
         return this.experience;
     }
     public String getName() {
         return this.name;
+    }
+    public AstronautType getType() {
+        if(this instanceof ManagingAstronaut){
+            return AstronautType.MANAGING_ASTRONAUT;
+        }
+        if (this instanceof Astronaut) {
+            return AstronautType.ASTRONAUT;
+        }else{
+            return AstronautType.ASTRONAUT_INTERN;
+        }
+    }
+    public AstronautDestination getDestination(){
+        return destination;
     }
     public double getX() {
         return this.x;
@@ -280,13 +332,19 @@ public class AstronautIntern implements Cloneable, Comparable<AstronautIntern> {
     public double getY() {
         return this.y;
     }
-    public int getQuantityOfSpaceWalks() {
-        return this.quantityOfSpaceWalks;
-    }
     public int getEnergy() {
         return this.energy;
     }
     public Group getGroup() {
         return this.group;
+    }
+    public boolean getInModule(){
+        return this.inModule;
+    }
+    public boolean getElect(){
+        return this.elect;
+    }
+    public boolean getActive() {
+        return isActive;
     }
 }

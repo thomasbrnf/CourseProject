@@ -1,6 +1,7 @@
 package application.aurora.windows;
 
 import application.aurora.micro_objects.AstronautIntern;
+import application.aurora.micro_objects.ManagingAstronaut;
 import application.aurora.tools.Tools;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Tabulations {
     @FXML
@@ -72,7 +74,9 @@ public class Tabulations {
             Label objectClass = createLabel(String.valueOf(astronaut.getAstronautClass()), 155, margin);
             Label experienceObject = createLabel(String.valueOf(astronaut.getExperience()), 320, margin);
             Label energyObject = createLabel(String.valueOf(astronaut.getEnergy()), 385, margin);
-            Label spaceWalks = createLabel(String.valueOf(astronaut.getQuantityOfSpaceWalks()), 474, margin);
+            Label spaceWalks;
+            if(astronaut instanceof ManagingAstronaut)spaceWalks = createLabel(String.valueOf(((ManagingAstronaut)astronaut).getQuantityOfSpaceWalks()), 474, margin);
+            else{spaceWalks = createLabel(String.valueOf("0".toCharArray()), 474, margin);}
             Label coordinates = createLabel((int)astronaut.getGroup().getLayoutX() + ", " + (int)astronaut.getGroup().getLayoutY(), 550, margin);
             pane.getChildren().addAll(id, nameObject, objectClass, experienceObject, energyObject, spaceWalks, coordinates);
 
@@ -93,9 +97,9 @@ public class Tabulations {
     @FXML
     private void onSearchButtonClicked(){
         switch(getFilterOption()){
-            case 1 -> addAstronautData(search, Tools.filterObjectsBy(textField.getText(), 1),72);
-            case 2 -> addAstronautData(search, Tools.filterObjectsBy(textField.getText(), 2),72);
-            case 3 -> addAstronautData(search, Tools.filterObjectsBy(textField.getText(), 3),72);
+            case 1 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 1)),72);
+            case 2 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 2)),72);
+            case 3 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 3)),72);
         }
     }
     private int getFilterOption(){

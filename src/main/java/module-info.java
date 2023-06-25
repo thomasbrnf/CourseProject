@@ -14,4 +14,6 @@ module application.aurora {
     opens application.aurora.windows to javafx.fxml;
     exports application.aurora.micro_objects;
     opens application.aurora.micro_objects to javafx.fxml;
+    exports application.aurora.tools.tools_micro_objects;
+    opens application.aurora.tools.tools_micro_objects to javafx.fxml;
 }
