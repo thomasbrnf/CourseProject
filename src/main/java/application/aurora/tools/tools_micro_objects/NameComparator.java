@@ -1,4 +1,4 @@
-package application.aurora.tools;
+package application.aurora.tools.tools_micro_objects;
 
 import application.aurora.micro_objects.AstronautIntern;
 

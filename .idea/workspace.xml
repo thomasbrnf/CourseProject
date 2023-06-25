@@ -4,12 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="">
+    <list default="true" id="36c5c1bf-fbe6-462c-aa4b-a7fcd73d12c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/images/astronautIntern.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/habitation_container.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/maintenance_container.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/managingAstronaut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/objectBackground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/scientific_container.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/MiniMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautDestination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/ToolsForAstronaut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/astronautActive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/habitation_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/habitation_module.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/maintenance_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/maintenance_module.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/map.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/map.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/scientific_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/scientific_module.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/HabitationModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/HabitationModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/ScientificModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/Astronaut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/ManagingAstronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/ManagingAstronaut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/NameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/NameComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +52,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
-        <option value="CSS File" />
-        <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -29,152 +60,47 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="2OpNtoriP3yh1UgQwktd0niXnYK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="630a4208-0efc-4f27-82aa-c7e202c9be38" />
+        <option name="url" value="https://github.com/thomasbrnf/CourseProject.git" />
+      </UrlAndAccount>
+    </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2RCE7OdcBVXExnAlhqprjTRT0Pp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Artem/IdeaProjects/Aurora/src/main/java/codegame/aurora/dialogs&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Documents/VNTU/CourseProject/Aurora",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="codegame.aurora.astros" />
-      <recent name="codegame.aurora" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources" />
-      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\astros" />
-      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\codegame\aurora\dialogs" />
-      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\resources\codegame\aurora" />
-      <recent name="C:\Users\Artem\IdeaProjects\Aurora\src\main\java\codegame\aurora\dialogs" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Aurora" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="application.aurora.Main" />
-      <module name="CourseProject" />
+      <module name="Aurora" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="9ffd7ac0-2ad7-42a4-930c-bbcbab42eb6b" name="Changes" comment="" />
-      <created>1682253782723</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1682253782723</updated>
-      <workItem from="1682253783685" duration="1221000" />
-      <workItem from="1682582946918" duration="10823000" />
-      <workItem from="1682687076069" duration="14615000" />
-      <workItem from="1682843834402" duration="812000" />
-      <workItem from="1682845785791" duration="637000" />
-      <workItem from="1682846642529" duration="7453000" />
-      <workItem from="1682866555459" duration="11528000" />
-      <workItem from="1682944907266" duration="2369000" />
-      <workItem from="1683029085318" duration="3598000" />
-      <workItem from="1683046093804" duration="5313000" />
-      <workItem from="1683112562420" duration="203000" />
-      <workItem from="1683128889216" duration="2413000" />
-      <workItem from="1683230362948" duration="57000" />
-      <workItem from="1683293197344" duration="1993000" />
-      <workItem from="1683308357999" duration="1107000" />
-      <workItem from="1683366210895" duration="14810000" />
-      <workItem from="1683451292977" duration="33141000" />
-      <workItem from="1683533606165" duration="5411000" />
-      <workItem from="1683539877375" duration="3442000" />
-      <workItem from="1683545964067" duration="2379000" />
-      <workItem from="1683622620727" duration="9192000" />
-      <workItem from="1683656350450" duration="3911000" />
-      <workItem from="1683700078377" duration="1193000" />
-      <workItem from="1683705655211" duration="156000" />
-      <workItem from="1683707217769" duration="149000" />
-      <workItem from="1683710928637" duration="9309000" />
-      <workItem from="1683736635748" duration="605000" />
-      <workItem from="1683785209898" duration="22257000" />
-      <workItem from="1683828517572" duration="2507000" />
-      <workItem from="1683873347387" duration="25703000" />
-      <workItem from="1683969230574" duration="10373000" />
-      <workItem from="1684007316971" duration="598000" />
-      <workItem from="1684053605460" duration="11065000" />
-      <workItem from="1684095330119" duration="135000" />
-      <workItem from="1684242562982" duration="6389000" />
-      <workItem from="1684322395995" duration="711000" />
-      <workItem from="1684335848218" duration="732000" />
-      <workItem from="1684337539836" duration="13968000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
 </project>

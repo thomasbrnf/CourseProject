@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static application.aurora.tools.Tools.electedAstronaut;
@@ -104,7 +105,7 @@ public class Parameters {
     @FXML
     private void cancelButtonClicked() {window.close();}
     @FXML
-    private void applyButtonClicked() {
+    private void applyButtonClicked() throws FileNotFoundException {
         if (isInputValid()) {
             astronautClass = getSelectedClass();
             fillWarning.setOpacity(0);
@@ -114,7 +115,7 @@ public class Parameters {
             electedAstronaut.setName(astronautName);
             electedAstronaut.setEnergy(energy);
             electedAstronaut.setExperience(experience);
-            electedAstronaut.setElect();
+            electedAstronaut.toggleElect();
             window.close();
         } else {
             fillWarning.setOpacity(1);
