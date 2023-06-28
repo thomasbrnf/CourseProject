@@ -1,6 +1,5 @@
 package application.aurora.macro_objects;
 
-import application.aurora.Main;
 import application.aurora.micro_objects.AstronautIntern;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -11,10 +10,10 @@ import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import static application.aurora.macro_objects.tools.CONSTANTS.*;
+import static application.aurora.tools.Tools.getRoot;
+
 public class HabitationModule extends Module{
-    private static final int ENERGY_INCREASE_AMOUNT = 1;
-    private static final int UPDATE_INTERVAL_MS = 300;
-    private static final int FADE_DURATION_MS = 300;
     private static HabitationModule instance = null;
     private HabitationModule() throws FileNotFoundException {
         super();
@@ -26,7 +25,7 @@ public class HabitationModule extends Module{
 
         initializeOccupationAreas();
 
-        Main.root.getChildren().add(getGroup());
+        getRoot().getChildren().add(getGroup());
     }
     public static HabitationModule getInstance() throws FileNotFoundException {
         if (instance == null) {
@@ -35,14 +34,14 @@ public class HabitationModule extends Module{
         return instance;
     }
     private void setXY() {
-        x = 100;
-        y = 97;
+        x = X_SPAWN_HABITATION;
+        y = Y_SPAWN_HABITATION;
     }
     private void setNaming() {
         naming.setText("Habitation Module");
-        naming.setLayoutX(215);
-        naming.setLayoutY(660);
-        naming.setRotate(-90);
+        naming.setLayoutX(TEXT_X_HABITATION);
+        naming.setLayoutY(TEXT_Y_HABITATION);
+        naming.setRotate(TEXT_ROTATE_HABITATION);
     }
     private void setImageView() throws FileNotFoundException {
         Image image = new Image(new FileInputStream("src/images/habitation_module.png"));
@@ -59,6 +58,7 @@ public class HabitationModule extends Module{
     }
     private void setInitialOpacity(AstronautIntern astronautIntern, Container container){
         double initialOpacity = (double) astronautIntern.getEnergy() / 100;
+        container.getBar().setVisible(true);
         container.getBar().setOpacity(initialOpacity);
     }
     @Override
@@ -69,7 +69,9 @@ public class HabitationModule extends Module{
                 updateEnergyLevel(container, astronautIntern))));
         container.getTimeLine().setCycleCount(100 - astronautIntern.getEnergy());
         container.getTimeLine().play();
-        container.getTimeLine().setOnFinished(e -> ejectAstronaut(astronautIntern));
+        container.getTimeLine().setOnFinished(e -> {
+            container.getBar().setVisible(false);
+            ejectAstronaut(astronautIntern);});
         container.setFadeTransition(new FadeTransition(Duration.millis(FADE_DURATION_MS), container.getBar()));
         container.getFadeTransition().setAutoReverse(false);
     }

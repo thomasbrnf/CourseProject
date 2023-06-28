@@ -1,6 +1,5 @@
 package application.aurora.windows;
 
-import application.aurora.tools.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +10,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static application.aurora.micro_objects.tools.AstronautTools.registerAstronaut;
+import static application.aurora.tools.Tools.getLogo;
 
 public class Creations {
     @FXML
@@ -39,6 +41,7 @@ public class Creations {
             Scene scene = new Scene(anchorPane);
 
             window = new Stage();
+            window.getIcons().add(getLogo());
             window.initModality(Modality.APPLICATION_MODAL);
             window.setResizable(false);
             window.setScene(scene);
@@ -78,7 +81,7 @@ public class Creations {
             int energy = (int) energySlider.getValue();
 
             try {
-                Tools.registerAstronaut(name, objectClass, experience, energy);
+                registerAstronaut(name, objectClass, experience, energy);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

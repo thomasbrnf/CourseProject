@@ -1,34 +1,33 @@
-package application.aurora;
+package application.aurora.world;
 
 import application.aurora.micro_objects.AstronautIntern;
+import application.aurora.tools.KeyEventHandler;
+import application.aurora.tools.MouseEventHandler;
 import application.aurora.tools.Tools;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static application.aurora.tools.Tools.miniMap;
+import static application.aurora.tools.CONSTANTS.*;
+import static application.aurora.tools.Tools.*;
 
 public class Main extends Application {
-    public static Pane root = new Pane();
-    public static StackPane stackPane;
     public static List<AstronautIntern> astronauts = new ArrayList<>();
-
     @Override
     public void start(Stage stage) throws FileNotFoundException {
-        stackPane = new StackPane(root, miniMap.getMapPane());
-        Scene scene = new Scene(stackPane,1280,720);
+        Scene scene = new Scene(getStackPane(),SCENE_WIDTH,SCENE_HEIGHT);
         stage.setTitle("Project Aurora");
-        Tools.initializeEnvironment();
-        scene.setOnKeyPressed(Tools::setOnKeyPressed);
-        scene.setOnMouseClicked(Tools::setOnMouseClicked);
+        stage.getIcons().add(getLogo());
 
-        stage.setResizable(true);
+        Tools.initializeEnvironment();
+        scene.setOnKeyPressed(KeyEventHandler::setOnKeyPressed);
+        scene.setOnMouseClicked(MouseEventHandler::setOnMouseClicked);
+
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

@@ -1,9 +1,7 @@
 package application.aurora.macro_objects;
 
-import application.aurora.Main;
 import application.aurora.micro_objects.AstronautIntern;
 import application.aurora.micro_objects.ManagingAstronaut;
-import application.aurora.tools.Tools;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +10,11 @@ import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
+import static application.aurora.micro_objects.tools.AstronautTools.getAmountOfExperience;
+import static application.aurora.micro_objects.tools.CONSTANTS.*;
+import static application.aurora.macro_objects.tools.CONSTANTS.*;
+import static application.aurora.tools.Tools.getRoot;
 
 public class ScientificModule extends Module{
     private static ScientificModule instance = null;
@@ -24,7 +27,7 @@ public class ScientificModule extends Module{
         setGroup();
         initializeOccupationAreas();
 
-        Main.root.getChildren().add(getGroup());
+        getRoot().getChildren().add(getGroup());
     }
     public static ScientificModule getInstance() throws FileNotFoundException {
         if (instance == null) {
@@ -33,8 +36,8 @@ public class ScientificModule extends Module{
         return instance;
     }
     private void setXY() {
-        x = 942;
-        y = 1180;
+        x = X_SPAWN_SCIENTIFIC;
+        y = Y_SPAWN_SCIENTIFIC;
     }
     private void setImageView() throws FileNotFoundException {
         Image image = new Image(new FileInputStream("src/images/scientific_module.png"));
@@ -63,6 +66,7 @@ public class ScientificModule extends Module{
             image = new Image(new FileInputStream("src/images/in_space_bar.png"));
         }
         container.getBar().setImage(image);
+        container.getBar().setVisible(true);
     }
     private void initializeOccupationAreas() throws FileNotFoundException {
         int yAlignment = 5;
@@ -88,23 +92,36 @@ public class ScientificModule extends Module{
         container.setTimeLine(new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
             checkEnergyLevel(astronautIntern);
             fadeInStatusBar(container);
-            astronautIntern.updateExperienceAfterExperiments(Tools.getAmountOfExperience(astronautIntern));
+            astronautIntern.updateOnExperiments();
         })));
         container.getTimeLine().setCycleCount(10);
         container.getTimeLine().play();
-        container.getTimeLine().setOnFinished(e -> ejectAstronaut(astronautIntern));
+        container.getTimeLine().setOnFinished(e -> {
+            if(astronautIntern.getEnergy() > ENERGY_THRESHOLD){
+                container.getTimeLine().play();
+            }else {
+                container.getBar().setVisible(false);
+            astronautIntern.updateExperienceAfterExperiments(getAmountOfExperience(astronautIntern));
+            ejectAstronaut(astronautIntern);}
+        });
     }
     private void initializeSpaceExpedition(Container container, AstronautIntern astronautIntern) throws FileNotFoundException {
         setTaskImage(container,2);
         fadeInStatusBar(container);
 
         container.setTimeLine(new Timeline(new KeyFrame(Duration.seconds(1), event ->
-                ((ManagingAstronaut)astronautIntern).updateOnExpedition(0.5))));
+                ((ManagingAstronaut)astronautIntern).updateOnExpedition())));
         container.getTimeLine().setCycleCount(15);
         container.getTimeLine().play();
         container.getTimeLine().setOnFinished(e -> {
-            ejectAstronaut(astronautIntern);
-            ((ManagingAstronaut)astronautIntern).updateAfterExpedition();
+            if(astronautIntern.getEnergy() > ENERGY_THRESHOLD){
+                container.getTimeLine().play();
+            }else {
+                container.getBar().setVisible(false);
+                container.getTimeLine().stop();
+                ejectAstronaut(astronautIntern);
+                ((ManagingAstronaut) astronautIntern).updateAfterExpedition();
+            }
         });
     }
     private void fadeInStatusBar(Container container){

@@ -1,31 +1,37 @@
-package application.aurora;
+package application.aurora.ui;
 
+import javafx.scene.Group;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import static application.aurora.tools.CONSTANTS.*;
+import static application.aurora.tools.MouseEventHandler.setOnMouseEntered;
+import static application.aurora.tools.MouseEventHandler.setOnMouseExited;
+
 public class MiniMap {
-    private final Pane mapPane;
+    private final Group mapGroup;
     private final Rectangle focusArea;
     private final ImageView worldMapImage;
     public MiniMap(){
         worldMapImage = createWorldMapImage();
         focusArea = createFocusArea();
-        mapPane = createMapPane(worldMapImage,focusArea);
+        mapGroup = createMapGroup(worldMapImage,focusArea);
     }
-    private Pane createMapPane(ImageView worldMapImage, Rectangle focusArea) {
+    private Group createMapGroup(ImageView worldMapImage, Rectangle focusArea) {
         Rectangle outline = createOutlineForMap();
         Rectangle outerShadow = createOuterShadow();
 
-        Pane mapPane = new Pane(outerShadow, worldMapImage, outline, focusArea);
-
-        applyPosition(mapPane);
-
-        return mapPane;
+        Group mapGroup = new Group(outerShadow, worldMapImage, outline, focusArea);
+        mapGroup.setOpacity(0.5);
+        applyPosition(mapGroup);
+        mapGroup.setOnMouseEntered(mouseEvent1 -> setOnMouseEntered());
+        mapGroup.setOnMouseExited(mouseEvent -> setOnMouseExited());
+        return mapGroup;
     }
     private void setRoundedCorners(ImageView imageView) {
-        Rectangle clipRect = new Rectangle(372, 274);
+        Rectangle clipRect = new Rectangle(MINI_MAP_WIDTH, MINI_MAP_HEIGHT);
         clipRect.setArcWidth(100);
         clipRect.setArcHeight(100);
 
@@ -43,7 +49,7 @@ public class MiniMap {
         return rectangle;
     }
     private Rectangle createFocusArea(){
-        Rectangle rectangle = new Rectangle(213,120);
+        Rectangle rectangle = new Rectangle(FOCUS_AREA_WIDTH,FOCUS_AREA_HEIGHT);
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.rgb(253,183,0));
         rectangle.setStrokeWidth(3);
@@ -79,9 +85,9 @@ public class MiniMap {
 
         return imageView;
     }
-    private void applyPosition(Pane pane) {
-        pane.setTranslateX(20);
-        pane.setTranslateY(20);
+    private void applyPosition(Group group) {
+        group.setTranslateX(20);
+        group.setTranslateY(20);
     }
     private void applyDropShadow(Rectangle rectangle) {
         DropShadow dropShadow = createDropShadow();
@@ -93,8 +99,7 @@ public class MiniMap {
     public ImageView getView() {
         return worldMapImage;
     }
-    public Pane getMapPane() {
-        return mapPane;
+    public Group getMapGroup() {
+        return mapGroup;
     }
-
 }

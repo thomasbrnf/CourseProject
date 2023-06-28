@@ -5,32 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36c5c1bf-fbe6-462c-aa4b-a7fcd73d12c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/astronautIntern.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/habitation_container.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/maintenance_container.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/managingAstronaut.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/objectBackground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/scientific_container.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/MiniMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautDestination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/ToolsForAstronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/tools/CONSTANTS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/tools/ModuleTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/AstronautConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/AstronautTools.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/CONSTANTS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/JSON.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/KeyEventHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/MouseEventHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/ui/InfoPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/ui/UserInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/tools/Filters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/astronautActive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/habitation_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/habitation_module.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/maintenance_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/maintenance_module.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/map.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/scientific_module.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/scientific_module.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/world/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/world/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/MiniMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/ui/MiniMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/HabitationModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/HabitationModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/MaintenanceModule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java" afterDir="false" />
@@ -38,11 +28,17 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/Astronaut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/AstronautIntern.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/ManagingAstronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/ManagingAstronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/NameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/NameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/CONSTANTS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/tools/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/AstronautDestination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/AstronautType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/AstronautType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/NameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/micro_objects/tools/NameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/tools/tools_micro_objects/ToolsForAstronaut.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Creations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Creations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Parameters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/aurora/windows/Tabulations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AstronautDetailedPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AstronautDetailedPanel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +49,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Record" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -86,16 +84,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/Documents/VNTU/CourseProject/Aurora",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Documents/VNTU/CourseProject/Aurora&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Aurora" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="application.aurora.Main" />
+      <option name="MAIN_CLASS_NAME" value="application.aurora.world.Main" />
       <module name="Aurora" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -103,4 +104,15 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/application/aurora/macro_objects/Module.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

@@ -1,5 +1,7 @@
 package application.aurora.windows;
 
+import application.aurora.micro_objects.Astronaut;
+import application.aurora.micro_objects.tools.AstronautType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,8 +13,10 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Objects;
 
-import static application.aurora.tools.Tools.electedAstronaut;
+import static application.aurora.micro_objects.tools.AstronautTools.*;
+import static application.aurora.tools.Tools.getLogo;
 
 public class Parameters {
     @FXML
@@ -34,7 +38,6 @@ public class Parameters {
     @FXML
     private Label fillWarning;
     private static Stage window;
-    int astronautClass;
     static String astronautName;
     static int energy;
     static int experience;
@@ -46,6 +49,7 @@ public class Parameters {
         window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setResizable(false);
+        window.getIcons().add(getLogo());
         window.setScene(scene);
 
         ToggleGroup group = new ToggleGroup();
@@ -54,29 +58,29 @@ public class Parameters {
 
         window.showAndWait();
     }
-    private int getSelectedClass() {
+    private AstronautType getSelectedClass() {
         if (astronautInternButton.isSelected()) {
-            return 0;
+            return AstronautType.ASTRONAUT_INTERN;
         } else if (astronautButton.isSelected()) {
-            return 1;
+            return AstronautType.ASTRONAUT;
         } else if (managingAstronautButton.isSelected()) {
-            return 2;
+            return AstronautType.MANAGING_ASTRONAUT;
         }
-        return -1;
+        return null;
     }
     public static void setInformation(AnchorPane editorPane, ToggleGroup group) {
         TextField nameField = (TextField) editorPane.lookup("#nameField");
-        nameField.setText(electedAstronaut.getName());
+        nameField.setText(getElectedAstronaut().getName());
 
         Slider energySlider = (Slider) editorPane.lookup("#energySlider");
-        energySlider.setValue(electedAstronaut.getEnergy());
+        energySlider.setValue(getElectedAstronaut().getEnergy());
 
         Slider experienceSlider = (Slider) editorPane.lookup("#experienceSlider");
-        experienceSlider.setValue(electedAstronaut.getExperience());
+        experienceSlider.setValue(getElectedAstronaut().getExperience());
 
         for (Toggle toggle : group.getToggles()) {
             RadioButton radioButton = (RadioButton) toggle;
-            if (electedAstronaut.getAstronautClass().equals(radioButton.getText())) {
+            if (getElectedAstronaut().getAstronautClass().equals(radioButton.getText())) {
                 radioButton.setSelected(true);
                 break;
             }
@@ -105,17 +109,17 @@ public class Parameters {
     @FXML
     private void cancelButtonClicked() {window.close();}
     @FXML
-    private void applyButtonClicked() throws FileNotFoundException {
+    private void applyButtonClicked() throws IOException {
         if (isInputValid()) {
-            astronautClass = getSelectedClass();
             fillWarning.setOpacity(0);
             astronautName = nameField.getText();
             energy = (int) energySlider.getValue();
             experience = (int) experienceSlider.getValue();
-            electedAstronaut.setName(astronautName);
-            electedAstronaut.setEnergy(energy);
-            electedAstronaut.setExperience(experience);
-            electedAstronaut.toggleElect();
+            getElectedAstronaut().setName(astronautName);
+            getElectedAstronaut().setEnergy(energy);
+            getElectedAstronaut().setExperience(experience);
+            if(getElectedAstronaut().getType() != getSelectedClass())
+                upgradeAstronaut(getElectedAstronaut(), Objects.requireNonNull(getSelectedClass()));
             window.close();
         } else {
             fillWarning.setOpacity(1);

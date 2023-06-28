@@ -1,7 +1,7 @@
 package application.aurora.micro_objects;
 
-import application.aurora.tools.tools_micro_objects.AstronautDestination;
-import application.aurora.tools.tools_micro_objects.ToolsForAstronaut;
+import application.aurora.micro_objects.tools.AstronautDestination;
+import application.aurora.micro_objects.tools.AstronautTools;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
@@ -11,10 +11,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
 
+import static application.aurora.micro_objects.tools.CONSTANTS.*;
+
 public class ManagingAstronaut extends Astronaut {
-    private int quantityOfSpaceWalks = 0;
-    public ManagingAstronaut(String name, int i, int i1) throws IOException {
-        super(name, i, i1);
+    private int quantityOfSpaceWalks = QUANTITY_OF_SPACE_WALKS_DEFAULT;
+    public ManagingAstronaut(String name, int energy, double experience) throws IOException {
+        super(name, energy, experience);
     }
     @Override
     protected void setImageView() throws FileNotFoundException {
@@ -26,31 +28,31 @@ public class ManagingAstronaut extends Astronaut {
     }
     @Override
     protected void setElectedPane() {
-        ToolsForAstronaut.setActivePaneLayout(activePane, getX(),getY());
+        AstronautTools.setActivePaneLayout(activePane, getX(),getY());
 
-        ToolsForAstronaut.createLabel(activePane.lookup("#nameLabel"), name);
-        ToolsForAstronaut.createLabel(activePane.lookup("#classObject"),getAstronautClass());
-        ToolsForAstronaut.createLabel(activePane.lookup("#experienceLabel"),String.valueOf(getExperience()));
-        ToolsForAstronaut.createLabel(activePane.lookup("#spaceWalksLabel"),String.valueOf(getQuantityOfSpaceWalks()));
+        AstronautTools.createLabel(activePane.lookup("#nameLabel"), name);
+        AstronautTools.createLabel(activePane.lookup("#classObject"),getAstronautClass());
+        AstronautTools.createLabel(activePane.lookup("#experienceLabel"),String.valueOf(getExperience()));
+        AstronautTools.createLabel(activePane.lookup("#spaceWalksLabel"),String.valueOf(getQuantityOfSpaceWalks()));
 
-        Line energyLine = ToolsForAstronaut.createLine(activePane.lookup("#energyLine"),
-                (int) (energy * 1.56), null, energy);
-        ToolsForAstronaut.createLine(activePane.lookup("#energyLineBackground"), null,
-                (int) energyLine.getStartX(), energy);
+        Line energyLine = AstronautTools.createLine(activePane.lookup("#energyLine"),
+                (int) (getEnergy() * ENERGY_SCALE_FACTOR), null, getEnergy());
+        AstronautTools.createLine(activePane.lookup("#energyLineBackground"), null,
+                (int) energyLine.getStartX(), getEnergy());
 
         addChild(activePane);
         removeChild(mainPane);
     }
-    private void setQuantityOfSpaceWalks(int i) {
+    public void setQuantityOfSpaceWalks(int i) {
         this.quantityOfSpaceWalks = i;
     }
-    public void updateOnExpedition(double exp) {
-        setEnergy(getEnergy() - 1);
-        setExperience(getExperience() + exp);
-        updateEnergyLine(getEnergy(),1);
+    public void updateOnExpedition() {
+        setEnergy(getEnergy() - ENERGY_OFFSET);
+        updateEnergyLine(getEnergy());
     }
     public void updateAfterExpedition(){
-        setQuantityOfSpaceWalks(getQuantityOfSpaceWalks()+1);
+        setExperience(getExperience() + EXPERIENCE_AFTER_EXPEDITION);
+        setQuantityOfSpaceWalks(getQuantityOfSpaceWalks() + QUANTITY_OF_SPACE_WALKS_AFTER_EXPEDITION);
     }
     public int getQuantityOfSpaceWalks() {
         return quantityOfSpaceWalks;

@@ -1,6 +1,5 @@
 package application.aurora.macro_objects;
 
-import application.aurora.Main;
 import application.aurora.micro_objects.AstronautIntern;
 import application.aurora.tools.Tools;
 import javafx.animation.FadeTransition;
@@ -12,6 +11,10 @@ import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
+import static application.aurora.micro_objects.tools.CONSTANTS.*;
+import static application.aurora.macro_objects.tools.CONSTANTS.*;
+import static application.aurora.tools.Tools.getRoot;
 
 public class MaintenanceModule extends Module{
     private static MaintenanceModule instance = null;
@@ -25,7 +28,7 @@ public class MaintenanceModule extends Module{
 
         initializeOccupationAreas();
 
-        Main.root.getChildren().add(getGroup());
+        getRoot().getChildren().add(getGroup());
     }
     public static MaintenanceModule getInstance() throws FileNotFoundException {
         if (instance == null) {
@@ -34,8 +37,8 @@ public class MaintenanceModule extends Module{
         return instance;
     }
     private void setXY() {
-        x = 1363;
-        y = 86;
+        x = X_SPAWN_MAINTENANCE;
+        y = Y_SPAWN_MAINTENANCE;
     }
     private void setImageView() throws FileNotFoundException {
         Image image = new Image(new FileInputStream("src/images/maintenance_module.png"));
@@ -63,10 +66,19 @@ public class MaintenanceModule extends Module{
     }
     @Override
     public void initializeInteraction(Container container, AstronautIntern astronautIntern){
+        container.getBar().setVisible(true);
+
         container.setTimeLine(new Timeline(new KeyFrame(Duration.seconds(1), event -> fadeInStatusBar(astronautIntern, container))));
         container.getTimeLine().setCycleCount(10);
         container.getTimeLine().play();
-        container.getTimeLine().setOnFinished(e -> ejectAstronaut(astronautIntern));
+        container.getTimeLine().setOnFinished(e -> {
+            if(astronautIntern.getEnergy() > ENERGY_THRESHOLD){
+                container.getTimeLine().play();
+            }else {
+                container.getBar().setVisible(false);
+                ejectAstronaut(astronautIntern);
+            }
+        });
     }
     private void fadeInStatusBar(AstronautIntern astronautIntern, Container container){
         checkEnergyLevel(astronautIntern);
