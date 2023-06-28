@@ -7,9 +7,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static application.aurora.micro_objects.tools.CONSTANTS.IMAGE_MARGIN;
+
 public class Astronaut extends AstronautIntern {
-    public Astronaut(String name, int i, int i1) throws IOException {
-        super(name, i, i1);
+    public Astronaut(String name, int energy, double experience) throws IOException {
+        super(name, energy, experience);
     }
     @Override
     protected void setImageView() throws FileNotFoundException {
@@ -17,7 +19,7 @@ public class Astronaut extends AstronautIntern {
 
         super.imageView = new ImageView(imageObjectMain);
         super.imageView.setLayoutX(getX());
-        super.imageView.setLayoutY(getY() + 17);
+        super.imageView.setLayoutY(getY() + IMAGE_MARGIN);
     }
     @Override
     public String getAstronautClass() {

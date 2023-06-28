@@ -1,6 +1,8 @@
-package application.aurora;
+package application.aurora.world;
 
-import application.aurora.tools.Tools;
+import static application.aurora.tools.CONSTANTS.*;
+import static application.aurora.tools.Tools.getRoot;
+import static application.aurora.tools.Tools.getUserInterface;
 
 public class Camera {
     private double x;
@@ -8,25 +10,25 @@ public class Camera {
     public void moveCameraX(double x) {
         this.x = x;
 
-        Main.root.setTranslateX(x);
-        Tools.miniMap.getFocusArea().setX(getMiniMapPositionX(x));
+        getRoot().setTranslateX(x);
+        getUserInterface().getMiniMap().getFocusArea().setX(getMiniMapPositionX(x));
     }
     public void moveCameraY(double y) {
         this.y = y;
 
-        Main.root.setTranslateY(y);
-        Tools.miniMap.getFocusArea().setY(getMiniMapPositionY(y));
+        getRoot().setTranslateY(y);
+        getUserInterface().getMiniMap().getFocusArea().setY(getMiniMapPositionY(y));
     }
     public void moveX(int deltaX) {
-        x += 20 *deltaX;
+        x += MOVE_BY * deltaX;
         moveCameraX(x);
     }
     public void moveY(int deltaY) {
-        y += 20 * deltaY;
+        y += MOVE_BY * deltaY;
         moveCameraY(y);
     }
     public double calculate(double input, int dimension) {
-        double scaled = input * 6;
+        double scaled = input * DIVISOR;
         double centered = scaled - getCenterOfDimension(dimension);
         return checkBounds(centered, dimension);
     }
@@ -37,23 +39,23 @@ public class Camera {
     }
     private double getMaxDimension(int dimension) {
         if (dimension == 0) {
-            return 2237 - 1280;
+            return WORLD_WIDTH - SCENE_WIDTH;
         } else {
-            return 1644 - 720;
+            return WORLD_HEIGHT - SCENE_HEIGHT;
         }
     }
     private double getCenterOfDimension(int dimension) {
         if (dimension == 0) {
-            return (double) 1280 / 2;
+            return (double) SCENE_WIDTH / 2;
         } else {
-            return (double) 720 / 2;
+            return (double) SCENE_HEIGHT / 2;
         }
     }
     private double getMiniMapPositionX(double positionX) {
-        return Math.abs(positionX / 6);
+        return Math.abs(positionX / DIVISOR);
     }
     private double getMiniMapPositionY(double positionY) {
-        return Math.abs(positionY / 6);
+        return Math.abs(positionY / DIVISOR);
     }
     public double getX() {
         return x;

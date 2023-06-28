@@ -5,13 +5,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="90.0" prefWidth="156.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-background-radius: 3; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" >
-   <Label fx:id="nameLabel" layoutX="10.0" layoutY="1.0" prefHeight="21.0" prefWidth="138.0" text="Name" alignment="CENTER" textFill="WHITE">
+<AnchorPane prefHeight="90.0" prefWidth="156.0" style="-fx-background-color: rgba(0,0,0,0.5); -fx-background-radius: 3; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="nameLabel" alignment="CENTER" layoutX="10.0" layoutY="1.0" prefHeight="21.0" prefWidth="138.0" text="Name" textFill="WHITE">
       <font>
          <Font name="Arial Bold Italic" size="14.0" />
       </font>
    </Label>
-   <Label fx:id="classObject" layoutX="31.0" layoutY="23.0" prefHeight="14.0" prefWidth="92.0" text="Astronaut-Intern" textAlignment="CENTER" textFill="WHITE">
+   <Label fx:id="classObject" layoutX="16.0" layoutY="23.0" prefHeight="15.0" prefWidth="120.0" text="Astronaut-Intern" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="Arial Italic" size="12.0" />
       </font>

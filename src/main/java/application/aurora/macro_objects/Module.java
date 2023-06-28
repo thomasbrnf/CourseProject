@@ -1,6 +1,5 @@
 package application.aurora.macro_objects;
 
-import application.aurora.Main;
 import application.aurora.micro_objects.AstronautIntern;
 import application.aurora.tools.Tools;
 import javafx.animation.FadeTransition;
@@ -19,6 +18,10 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static application.aurora.macro_objects.tools.CONSTANTS.*;
+import static application.aurora.macro_objects.tools.ModuleTools.*;
+import static application.aurora.tools.Tools.getRoot;
 
 public abstract class Module {
     protected int x;
@@ -60,11 +63,15 @@ public abstract class Module {
             container.setActiveImage();
         }
     }
-    protected void setCoordinatesOnEjection(AstronautIntern astronaut){}
+    protected void setCoordinatesOnEjection(AstronautIntern astronaut){
+        // OVERRIDES IN SUPERCLASSES
+    }
     protected void setOccupationAreas(){
         this.occupationAreas = new LinkedHashMap<>();
     }
     public void setAstronaut(AstronautIntern astronaut) throws FileNotFoundException {
+        if(astronaut.onMission())astronaut.setOnMission(false);
+
         Container container = getAvailableContainer();
         if (container != null) {
             addAstronautToContainer(container, astronaut);
@@ -74,15 +81,14 @@ public abstract class Module {
             if (astronaut.getElect()) {
                 astronaut.toggleElect();
             }
-            Tools.astronautsInModules.add(astronaut);
         }
     }
     public void ejectAstronaut(AstronautIntern astronaut) {
         Container container = getContainerByAstronaut(astronaut);
         if (container != null) {
+            container.getBar().setVisible(false);
             container.stopAnimations();
             ejectAstronautFromContainer(container, astronaut);
-            Tools.astronautsInModules.remove(astronaut);
         }
     }
     public void ejectAstronaut(KeyCode code) {
@@ -100,7 +106,7 @@ public abstract class Module {
     private void addAstronautToContainer(Container container, AstronautIntern astronautIntern){
         occupationAreas.replace(container,null,astronautIntern);
 
-        Main.root.getChildren().remove(astronautIntern.getGroup());
+        getRoot().getChildren().remove(astronautIntern.getGroup());
         getGroup().getChildren().add(astronautIntern.getGroup());
 
         astronautIntern.getGroup().relocate(container.getX(), container.getY());
@@ -112,7 +118,7 @@ public abstract class Module {
         occupationAreas.replace(container, astronaut, null);
 
         getGroup().getChildren().remove(astronaut.getGroup());
-        Main.root.getChildren().add(astronaut.getGroup());
+        getRoot().getChildren().add(astronaut.getGroup());
 
         astronaut.setInModule(false);
 
@@ -127,15 +133,15 @@ public abstract class Module {
         }
     }
     private void deactivate() {
-        if(Tools.activeModule != null) {
+        if(getActiveModule() != null) {
             moduleImage.setEffect(null);
-            Tools.activeModule = null;
+            setActiveModule(null);
             setDefaultContainer();
         }
     }
     private void activate() {
-        if(Tools.activeModule != null)Tools.activeModule.toggleActive();
-        Tools.activeModule = this;
+        if(getActiveModule() != null)getActiveModule().toggleActive();
+        setActiveModule(this);
         setActiveContainer();
     }
     public boolean isActive(){
@@ -184,8 +190,8 @@ public abstract class Module {
             activeContainer.setLayoutY(y);
         }
         private void setObjectCoordinates() {
-            x += 20;
-            y -= 10;
+            x += X_STEP_CONTAINER;
+            y -= Y_STEP_CONTAINER;
         }
         private void setContainer(Image image) {
             container = new ImageView(image);
@@ -196,8 +202,8 @@ public abstract class Module {
         }
         protected void setBar(Image image) {
             bar = new ImageView(image);
-            bar.setLayoutX(x+18);
-            bar.setLayoutY(y+18);
+            bar.setLayoutX(x+BAR_OFFSET);
+            bar.setLayoutY(y+BAR_OFFSET);
             bar.setOpacity(0);
 
             getGroup().getChildren().add(bar);
@@ -235,10 +241,10 @@ public abstract class Module {
             return bar;
         }
         public int getX() {
-            return x+50;
+            return x+OFFSET_FOR_ASTRONAUT;
         }
         public int getY() {
-            return y+50;
+            return y+OFFSET_FOR_ASTRONAUT;
         }
     }
 }

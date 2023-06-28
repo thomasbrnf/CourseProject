@@ -2,7 +2,6 @@ package application.aurora.windows;
 
 import application.aurora.micro_objects.AstronautIntern;
 import application.aurora.micro_objects.ManagingAstronaut;
-import application.aurora.tools.Tools;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,9 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
+
+import static application.aurora.tools.Tools.getLogo;
+import static application.aurora.windows.tools.Filters.*;
 
 public class Tabulations {
     @FXML
@@ -33,12 +35,12 @@ public class Tabulations {
         TabPane pane = fxmlLoader.load();
         Scene scene = new Scene(pane);
 
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("allPane"), Tools.allObjectsInWorld(),42);
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("driftPane"), Tools.driftingObjects(),42);
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("habitationPane"),Tools.objectsInModule("Habitation"),42);
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("scientificPane"),Tools.objectsInModule("Scientific"),42);
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("maintenancePane"),Tools.objectsInModule("Maintenance"),42);
-        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("energyPane"),Tools.objectsWithLowEnergy(),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("allPane"), allObjectsInWorld(),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("driftPane"), driftingObjects(),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("habitationPane"),objectsInModule("Habitation"),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("scientificPane"),objectsInModule("Scientific"),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("maintenancePane"),objectsInModule("Maintenance"),42);
+        addAstronautData((AnchorPane) fxmlLoader.getNamespace().get("energyPane"),objectsWithLowEnergy(),42);
 
         search = (AnchorPane) fxmlLoader.getNamespace().get("searchPane");
         setToggleGroup(search);
@@ -46,6 +48,7 @@ public class Tabulations {
         Stage window = new Stage();
         window.initStyle(StageStyle.TRANSPARENT);
         window.setResizable(false);
+        window.getIcons().add(getLogo());
         window.setScene(scene);
         window.setOnShown(e -> {
             pane.setOpacity(1);
@@ -69,14 +72,17 @@ public class Tabulations {
     private static void addAstronautData(AnchorPane pane, ObservableList<AstronautIntern> list, int margin) {
         for (var astronaut : list) {
             if (astronaut == null) {continue;}
+
             Label id = createLabel(String.valueOf(astronaut.getID()), 16, margin);
             Label nameObject = createLabel(astronaut.getName(), 36, margin);
             Label objectClass = createLabel(String.valueOf(astronaut.getAstronautClass()), 155, margin);
-            Label experienceObject = createLabel(String.valueOf(astronaut.getExperience()), 320, margin);
+            Label experienceObject = createLabel(String.valueOf(astronaut.getExperienceRounded()), 320, margin);
             Label energyObject = createLabel(String.valueOf(astronaut.getEnergy()), 385, margin);
             Label spaceWalks;
+
             if(astronaut instanceof ManagingAstronaut)spaceWalks = createLabel(String.valueOf(((ManagingAstronaut)astronaut).getQuantityOfSpaceWalks()), 474, margin);
             else{spaceWalks = createLabel(String.valueOf("0".toCharArray()), 474, margin);}
+
             Label coordinates = createLabel((int)astronaut.getGroup().getLayoutX() + ", " + (int)astronaut.getGroup().getLayoutY(), 550, margin);
             pane.getChildren().addAll(id, nameObject, objectClass, experienceObject, energyObject, spaceWalks, coordinates);
 
@@ -97,9 +103,9 @@ public class Tabulations {
     @FXML
     private void onSearchButtonClicked(){
         switch(getFilterOption()){
-            case 1 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 1)),72);
-            case 2 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 2)),72);
-            case 3 -> addAstronautData(search, Objects.requireNonNull(Tools.filterObjectsBy(textField.getText(), 3)),72);
+            case 1 -> addAstronautData(search, Objects.requireNonNull(filterObjectsBy(textField.getText(), 1)),72);
+            case 2 -> addAstronautData(search, Objects.requireNonNull(filterObjectsBy(textField.getText(), 2)),72);
+            case 3 -> addAstronautData(search, Objects.requireNonNull(filterObjectsBy(textField.getText(), 3)),72);
         }
     }
     private int getFilterOption(){

@@ -7,13 +7,16 @@ module application.aurora {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires annotations;
+    requires com.fasterxml.jackson.databind;
 
-    opens application.aurora to javafx.fxml;
-    exports application.aurora;
     exports application.aurora.windows;
     opens application.aurora.windows to javafx.fxml;
     exports application.aurora.micro_objects;
     opens application.aurora.micro_objects to javafx.fxml;
-    exports application.aurora.tools.tools_micro_objects;
-    opens application.aurora.tools.tools_micro_objects to javafx.fxml;
+    exports application.aurora.micro_objects.tools;
+    exports application.aurora.ui;
+    opens application.aurora.ui to javafx.fxml;
+    opens application.aurora.micro_objects.tools to com.fasterxml.jackson.databind, javafx.fxml;
+    exports application.aurora.world;
+    opens application.aurora.world to javafx.fxml;
 }
