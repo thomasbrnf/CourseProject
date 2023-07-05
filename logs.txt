@@ -1,4 +1,0 @@
-Static block was called
-Non-static block was called
-10Leonid Kadeniuk	AstronautIntern 	20	100	0
-Group position: x=10.0, y=0.0
